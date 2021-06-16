@@ -51,55 +51,42 @@
             })
         })
     }, t.prototype.init = function() {
-        this.enableDrag();
-        var t = new Date,
-            n = (t.getDate(), t.getMonth(), t.getFullYear(), new Date(e.now())),
-            a = [{
-                title: "Hey!",
-                start: new Date(e.now() + 158e6),
-                className: "bg-dark"
-            }, {
-                title: "See John Deo",
-                start: n,
-                end: n,
-                className: "bg-danger"
-            }, {
-                title: "Buy a Theme",
-                start: new Date(e.now() + 338e6),
-                className: "bg-primary"
-            }],
-            o = this;
-        o.$calendarObj = o.$calendar.fullCalendar({
-            slotDuration: "00:15:00",
-            minTime: "08:00:00",
-            maxTime: "19:00:00",
-            defaultView: "month",
-            handleWindowResize: !0,
-            height: e(window).height() - 200,
-            header: {
-                left: "prev,next today",
-                center: "title",
-                right: "month,agendaWeek,agendaDay"
-            },
-            events: a,
-            editable: !0,
-            droppable: !0,
-            eventLimit: !0,
-            selectable: !0,
-            drop: function(t) {
-                o.onDrop(e(this), t)
-            },
-            select: function(e, t, n) {
-                o.onSelect(e, t, n)
-            },
-            eventClick: function(e, t, n) {
-                o.onEventClick(e, t, n)
-            }
-        }), this.$saveCategoryBtn.on("click", function() {
-            var e = o.$categoryForm.find("input[name='category-name']").val(),
-                t = o.$categoryForm.find("select[name='category-color']").val();
-            null !== e && 0 != e.length && (o.$extEvents.append('<div class="external-event bg-' + t + '" data-class="bg-' + t + '" style="position: relative;"><i class="fa fa-move"></i>' + e + "</div>"), o.enableDrag())
-        })
+        // this.enableDrag();
+        // var t = new Date,
+        //     n = (t.getDate(), t.getMonth(), t.getFullYear(), new Date(e.now())),
+        //     a =
+        //     o = this;
+        // o.$calendarObj = o.$calendar.fullCalendar({
+        //     slotDuration: "00:15:00",
+        //     minTime: "08:00:00",
+        //     maxTime: "19:00:00",
+        //     defaultView: "month",
+        //     handleWindowResize: !0,
+        //     height: e(window).height() - 200,
+        //     header: {
+        //         left: "prev,next today",
+        //         center: "title",
+        //         right: "month,agendaWeek,agendaDay"
+        //     },
+        //     events: a,
+        //     editable: !0,
+        //     droppable: !0,
+        //     eventLimit: !0,
+        //     selectable: !0,
+        //     drop: function(t) {
+        //         o.onDrop(e(this), t)
+        //     },
+        //     select: function(e, t, n) {
+        //         o.onSelect(e, t, n)
+        //     },
+        //     eventClick: function(e, t, n) {
+        //         o.onEventClick(e, t, n)
+        //     }
+        // }), this.$saveCategoryBtn.on("click", function() {
+        //     var e = o.$categoryForm.find("input[name='category-name']").val(),
+        //         t = o.$categoryForm.find("select[name='category-color']").val();
+        //     null !== e && 0 != e.length && (o.$extEvents.append('<div class="external-event bg-' + t + '" data-class="bg-' + t + '" style="position: relative;"><i class="fa fa-move"></i>' + e + "</div>"), o.enableDrag())
+        // })
     }, e.CalendarApp = new t, e.CalendarApp.Constructor = t
 }(window.jQuery),
 function(e) {
