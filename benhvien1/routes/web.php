@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\homecontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,20 +17,58 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-
+//login
+Route::get('/dangnhap','homecontroller@dangnhap');
+route::post('/login','loginController@dangnhap');
+route::post('/dangky','loginController@dangky');
+route::get('/test/{key}','loginController@kiemtra');
+route::get('/dangxuat','loginController@dangxuat');
 
 // home 
 Route::get('/datlich', 'homecontroller@layout');
-Route::get('/theobacsi', 'homecontroller@layout_theobacsi');
+
 Route::get('/dsbacsi/{MaKhoa}', 'homecontroller@dsbacsi');
-Route::post('/search', 'homecontroller@search');
-Route::get('/theongay', 'homecontroller@layout_theongay');
+Route::get('/dskhoa/{key}', 'homecontroller@dskhoa');
+
+Route::post('/timkiem', 'homecontroller@timkiem');
+Route::get('/lichkham/{id}','homecontroller@lichkham' );
+Route::get('/dienthongtin/{MaLT}','homecontroller@diendangky');
+Route::get('dienthongtin/quan/{Maquan}','homecontroller@quan');
+Route::get('/theongay','homecontroller@homnay');
+Route::get('/ngaytruc/{ngay}','homecontroller@ngaytruc');
+
+Route::post('/dienthongtin','benhnhanController@diendangky');// Điền thông tin bệnh nhân
+Route::get('/dienthongtin/lay-benh-nhan/{MaBN}','benhnhancontroller@chitietbenhnhan');
+//benhnhan
+Route::get('/thanhcong/{key}','benhnhanController@thanhcong');
+Route::get('/trangcanhan','benhnhanController@trangcanhan');
+Route::get('/trangcanhan/chi-tiet-benh-nhan/{MaBN}','benhnhanController@chitietbenhnhan');
+Route::post('/trang-ca-nhan/cap-nhat','benhnhanController@capnhat');
+Route::get('/trang-ca-nhan/lich-kham/','benhnhanController@lichkham');
+//test 
+Route :: get('/test','homecontroller@test');
 
 //bacsi
+Route::get('/bacsi', 'BacsiController@index');
+Route::get('/trangbacsi', 'BacsiController@bacsi_layout');
+Route::get('/logout-bacsi', 'BacsiController@logout');
+Route::post('/admin-dashboard','BacsiController@dashboard');
+
+// bacsi
+Route::get('bac-si/lich-truc', 'BacsiController@lichtruc');
+Route::get('/bac-si/lich-truc/{NgayTruc}', 'BacsiController@lichtruc_chitiet');
+Route::get('/bac-si/lich-hen/{MaLT}', 'BacsiController@lichhen');
+Route::get('/bac-si/chi-tiet-benh-nhan/{MaLK}', 'BacsiController@chitietbenhnhan');
+Route::post('/bac-si/capnhat/', 'BacsiController@capnhat');
+Route::get('/bac-si/danh-sach-benh-nhan', 'BacsiController@danhsachbenhnhan');
+Route::get('/bac-si/danh-sach-bn', 'BacsiController@danhsachbn');
 
 
 
-//benhnhan
+
+
+
+
 
 
 //backend admin
@@ -93,3 +132,4 @@ Route::get('/ds-LTruc', 'QLLichTruc@ds_LTruc');
 Route::get('/edit-LTruc/{Ma_LTruc}', 'QLLichTruc@edit_LTruc');
 Route::post('/update-LTruc/{Ma_LTruc}', 'QLLichTruc@update_LTruc');
 Route::get('/delete-LTruc/{Ma_LTruc}', 'QLLichTruc@delete_LTruc');
+

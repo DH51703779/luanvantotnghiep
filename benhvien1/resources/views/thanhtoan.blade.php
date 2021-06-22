@@ -24,11 +24,7 @@ $ten = Session::get('ten');
                 <h2> Chọn hình thức thanh toán
                 </h2>
                 <br>
-                <div class="form-group">
-                    Thanh toán bằng VNpay&nbsp;&nbsp;&nbsp;
-                    <img height="50" src="{{asset('./public/frontend/img/logo/logovnpay.png')}}" alt="">
-
-                </div>
+               
                 <div class="form-group">
                     Thanh toán bằng Paypal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <img height="50" src="{{asset('./public/frontend/img/logo/logopaypal.jpg')}}" alt="">&nbsp;
