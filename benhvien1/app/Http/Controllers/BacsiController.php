@@ -20,8 +20,12 @@ class BacsiController extends Controller
             }
     }
     public function index(){
-
+        $matk=Session::get('matk-bacsi');
+        if($matk){
+            return  Redirect::to('/trangbacsi');
+        }else{
     	return view('admin_login');
+        }
     }
     public function bacsi_layout(){
         $this->Authlogin();
@@ -32,14 +36,16 @@ class BacsiController extends Controller
 
     public function lichtruc(){
         $this->Authlogin();
-        $MaBS = Session::get('matk-bacsi');
+        $MaBS = Session::get('MaBS');
         $lichtruc = DB::table('lichtruc')->where('MaBS',$MaBS)->get();
-        return view('bacsi.lichtruc-bacsi')->with('lichtruc',$lichtruc);
+        $count = DB::table('lichtruc')->where('MaBS',$MaBS)->count();
+        return view('bacsi.lichtruc-bacsi')->with('lichtruc',$lichtruc)->with('count',$count);
        
     }
     public function lichtruc_chitiet($NgayTruc){
-        $MaBS=Session::get('matk-bacsi');
-        $lichtruc = DB::table('lichtruc')->Join('bacsi', 'lichtruc.MaBS', '=', 'bacsi.MaBS')->where('NgayTruc',$NgayTruc)->where('lichtruc.MaBS',$MaBS)->get();
+        $MaBS=Session::get('MaBS');
+        $lichtruc = DB::table('lichtruc')->Join('bacsi', 'lichtruc.MaBS', '=', 'bacsi.MaBS')
+        ->where('NgayTruc',$NgayTruc)->where('lichtruc.MaBS',$MaBS)->get();
         foreach($lichtruc as $l){
             $LK = $l->MaLT;
             $data["MaLT"]=$LK;
@@ -50,7 +56,6 @@ class BacsiController extends Controller
             $Count = DB::table('lichkham')->where('MaLT',$LK)->count();
             $data["count"]=$Count;
             
-          
            $a[]=$data;
             $hihi = json_encode($a,true);
         } 
@@ -86,7 +91,7 @@ class BacsiController extends Controller
 
     public function danhsachbenhnhan(){
         $this->Authlogin();
-        $MaBS=Session::get('matk-bacsi'); 
+        $MaBS=Session::get('MaBS'); 
         $a = "2";
         $BN = DB::table('lichkham')
         ->Join('benhnhan', 'lichkham.MaBN', '=', 'benhnhan.MaBN')->where('lichkham.Trangthai',$a)->where('lichkham.MaBS',$MaBS)->get();
@@ -94,10 +99,16 @@ class BacsiController extends Controller
     }
     public function danhsachbn(){
         $this->Authlogin();
-        $MaBS=Session::get('matk-bacsi'); 
+        $MaBS=Session::get('MaBS'); 
         $a = "1";
         $BN = DB::table('lichkham')
         ->Join('benhnhan', 'lichkham.MaBN', '=', 'benhnhan.MaBN')->where('lichkham.Trangthai',$a)->where('lichkham.MaBS',$MaBS)->get();
         return view('bacsi.lichkham_vang')->with('danhsach',$BN) ;
+    }
+    public function logout(){
+        $this->Authlogin();
+        Session::put('ten-bacsi',null);
+        Session::put('matk-bacsi',null);
+        return Redirect::to('/bacsi');
     }
 }

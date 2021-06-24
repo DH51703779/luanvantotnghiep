@@ -17,6 +17,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+
+// chat
+Route::get('/bac-si/chat','chatController@listchat');
+Route::get('/bac-si/chat/khoa/{Makhoa}','chatController@chatkhoa');
+Route::get('/bac-si/chat/{Matk}','chatController@box_chat');
+Route::post('/bac-si/chat/send','chatController@send');
+Route::get('/bac-si/chat/load/{MaNN}','chatController@box_chat1');
+Route::get('/bac-si/test','chatController@test');
+Route::get('/bac-si/test','chatController@test');
+Route::get('/bac-si/chat/xemtin/{Matk}','chatController@xemtin');
+Route::get('/trangbacsi/tai-tin/{Matk}','chatController@loadtin');
+Route::get('/trangbacsi/tincho/','chatController@tincho');
+Route::get('/trangbacsi/timkiem/{key}','chatController@timkiem');
+
+
+
 //login
 Route::get('/dangnhap','homecontroller@dangnhap');
 route::post('/login','loginController@dangnhap');
@@ -35,7 +52,7 @@ Route::get('/lichkham/{id}','homecontroller@lichkham' );
 Route::get('/dienthongtin/{MaLT}','homecontroller@diendangky');
 Route::get('dienthongtin/quan/{Maquan}','homecontroller@quan');
 Route::get('/theongay','homecontroller@homnay');
-Route::get('/ngaytruc/{ngay}','homecontroller@ngaytruc');
+Route::get('dsbacsi/ngaytruc/{ngay}','homecontroller@ngaytruc');
 
 Route::post('/dienthongtin','benhnhanController@diendangky');// Điền thông tin bệnh nhân
 Route::get('/dienthongtin/lay-benh-nhan/{MaBN}','benhnhancontroller@chitietbenhnhan');

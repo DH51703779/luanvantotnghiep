@@ -44,11 +44,13 @@ $week = '';
 
 // Add empty cell
 $week .= str_repeat('<td></td>', $str);
+if($count >0){
 foreach ($lichtruc as $key => $value) {
     $LT[] = $value->NgayTruc;
 }
 $LT = array_unique($LT);
 $leng = count($LT);
+}
 for ($day = 1; $day <= $day_count; $day++, $str++) {
     $date = $ym . '-' . $day;
     $date1 = date_create($date);
@@ -57,6 +59,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
     if ($today == $date) {
         $week .= '<td data-id="' . $date2 . '" class="btnday btny" >' . $day;
     } else {
+        if($count>0){
         for ($i = 0; $i < $leng; $i++) {
             $NT = $LT[$i];
             if (strtotime($date2) == strtotime($NT)) {
@@ -65,6 +68,9 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
             }
         }
         if (!$tag) {
+            $week .= '<td data-id="' . $date2 . '" >' . $day;
+        }}
+        else{
             $week .= '<td data-id="' . $date2 . '" >' . $day;
         }
     }
@@ -123,7 +129,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
                     $('.btnday').click(function() {
                         var id = $(this).attr('data-id');
                         $.ajax({
-                            url: '/luanvantotnghiep/benhvien1/bac-si/lich-truc/' + id,
+                            url: '/benhvien1/bac-si/lich-truc/' + id,
                             method: "GET",
                             success: function(data) {
                                 data = JSON.parse(data);

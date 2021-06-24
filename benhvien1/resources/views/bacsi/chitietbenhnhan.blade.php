@@ -54,8 +54,15 @@
                     @if(strlen($BN->hinh)>0)
                     <div class="col-3">
                         <label class="form-label">Hình ảnh</label>
-                        <br>
-                        <img id="imgSmile" style="width:200px; height:150px" src="{{asset('./public/uploads/benhan/'.$BN->hinh)}}" />
+                        <div class="el-card-item">
+                                <div class="el-card-avatar el-overlay-1"><img id="imgSmile" style="width:200px; height:150px" src="{{asset('./public/uploads/benhan/'.$BN->hinh)}}" />
+                                   
+                                        <ul class="list-style-none el-info">
+                                            <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" href="{{asset('./public/uploads/benhan/'.$BN->hinh)}}"><i class="mdi mdi-magnify-plus"></i></a></li>
+                                        </ul>
+                                </div>
+                             </div>
+                     
                     </div>
                     @endif
                 </div>
@@ -63,7 +70,7 @@
                 <a  class="btn btn-primary">
                     < Quay lại </a>
                         @else
-                        <a href="{{URL::to('/bac-si/lich-hen/'.$BN->MaLT)}}" class="btn btn-primary">
+                            <a href="{{URL::to('/bac-si/lich-hen/'.$BN->MaLT)}}" class="btn btn-primary">
                             < Quay lại </a>
                                 <button name="submit" class="btn btn-danger" value="1">Vắng </button>
                                 <button name="submit" class="btn btn-success" value="2"> Đã khám </button>

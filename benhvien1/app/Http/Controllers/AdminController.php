@@ -20,8 +20,15 @@ class AdminController extends Controller
             }
     }
     public function index(){
-
+        $matk=Session::get('matk');
+        $mabacsi=Session::put('matk-bacsi');
+        if($matk){
+            return  Redirect::to('dashboard');
+        }elseif($mabacsi){
+            return Redirect::to('/trangbacsi');
+        }else{
     	return view('admin_login');
+        }
     }
     public function admin_layout(){
         $this->Authlogin();
@@ -40,7 +47,7 @@ class AdminController extends Controller
             Session::put('matk',$result->MaTK);
             return Redirect::to('/dashboard');
             }else{
-                Session::put('matk-bacsi',$result->MaBS);
+                Session::put('matk-bacsi',$result->MaTK);
                 Session::put('MaBS',$result->MaBS);
                 $bacsi = DB::table('bacsi')->where('MaBs',$result->MaBS)->first();
                 Session::put('ten-bacsi',$bacsi->TenBS);
@@ -54,8 +61,8 @@ class AdminController extends Controller
     }
     public function logout(){
         $this->Authlogin();
-        Session::put('ten-bacsi',null);
-        Session::put('matk-bacsi',null);
+        Session::put('ten',null);
+        Session::put('matk',null);
         return Redirect::to('/admin');
     }
 }
