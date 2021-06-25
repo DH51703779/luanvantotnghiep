@@ -68,6 +68,8 @@ Route :: get('/test','homecontroller@test');
 //bacsi
 Route::get('/bacsi', 'BacsiController@index');
 Route::get('/trangbacsi', 'BacsiController@bacsi_layout');
+Route::post('/trangbacsi/capnhat', 'BacsiController@capnhattt');
+Route::post('/trangbacsi/capnhattk', 'BacsiController@capnhattk');
 Route::get('/logout-bacsi', 'BacsiController@logout');
 Route::post('/admin-dashboard','BacsiController@dashboard');
 

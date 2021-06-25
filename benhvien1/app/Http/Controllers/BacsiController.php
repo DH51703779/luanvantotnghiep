@@ -29,7 +29,13 @@ class BacsiController extends Controller
     }
     public function bacsi_layout(){
         $this->Authlogin();
-    	return view('bacsi.giaodien');
+        $matk=Session::get('matk-bacsi');
+        $bacsi = DB::table('taiKhoan')
+        ->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')
+        ->join('khoa','bacsi.MaKhoa','=','khoa.MaKhoa')
+        ->where('MaTK',$matk)->get();
+       
+    	return view('bacsi.giaodien')->with('bacsi',$bacsi);
     }
 
     // lịch trực 
@@ -110,5 +116,18 @@ class BacsiController extends Controller
         Session::put('ten-bacsi',null);
         Session::put('matk-bacsi',null);
         return Redirect::to('/bacsi');
+    }
+    public function capnhattt(Request $re){
+        $data['DienThoai']=$re->dienthoai;
+        $data['DiaChi'] = $re->diachi;
+        $Ma = Session::get('MaBS');
+        DB::table('bacsi')->where('MaBS',$Ma)->update($data);
+        return  Redirect::to('/trangbacsi');
+    }
+    public function capnhattk(Request $re){
+        $data['MatKhau'] = $re->matkhau;
+        $matk=Session::get('matk-bacsi');
+        DB::table('taikhoan')->where('MaTK',$matk)->update($data);
+        return  Redirect::to('/trangbacsi');
     }
 }

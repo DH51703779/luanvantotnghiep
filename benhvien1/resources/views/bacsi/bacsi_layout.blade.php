@@ -144,6 +144,8 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
+                    <li class="sidebar-item"> <a class="sidebar-link " href="{{URL::to('/trangbacsi')}}"><i class="ti-user m-r-5 m-l-5"></i><span class="hide-menu">Trang bác sĩ  </span></a>
+                        </li>
                         <li class="sidebar-item"> <a class="sidebar-link " href="{{URL::to('/bac-si/lich-truc')}}"><i class="mdi mdi-receipt"></i><span class="hide-menu">Lịch trực </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-multiple-outline"></i><span class="hide-menu">Quản Lý Bệnh Nhân </span></a>
