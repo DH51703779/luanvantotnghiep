@@ -326,7 +326,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
                     $('.btnday').click(function() {
                         var id = $(this).attr('data-id');
                         $.ajax({
-                            url: '/benhvien3/ngaytruc/' + id,
+                            url: 'ngaytruc/' + id,
                             method: "GET",
                             success: function(data) {
                                 data = JSON.parse(data);

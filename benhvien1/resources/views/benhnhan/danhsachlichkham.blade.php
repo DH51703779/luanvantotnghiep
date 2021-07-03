@@ -49,7 +49,11 @@
         };
 
 
-       
+        function lichkham() {
+            const x = document.querySelector('#form')
+            x.innerHTML = `     `;
+
+        };
     </script>
 
 
@@ -62,7 +66,7 @@
                 <i class="fas fa-tags"></i> <a href="{{URL::to('/trangcanhan')}}" class="btnx form-group">
                     Hồ sơ bệnh nhân &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </a>
-                <i class="fas fa-tags"></i> <a href="{{URL::to('/trang-ca-nhan/lich-kham/')}}" class="btnx form-group">
+                <i class="fas fa-tags"></i> <a onclick="lichkham()" class="btnx form-group">
                     Lịch khám bệnh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </a>
 <section class="contact-section">
@@ -74,131 +78,55 @@
               
 
             </div>
-            
             <div id="form" class="col-8">
-                <h3>Hồ sơ bệnh nhân</h3>
+            <h3>Lịch khám bệnh</h3>
                 <br>
                 <br>
-                <table class="table table-bordered">
+                <table  class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Mã bệnh nhân</th>
+                            <th>Thời gian</th>
+                            <th>Số thứ tự</th>
                             <th>Tên bệnh nhân</th>
-                            <th>Giới tính</th>
-                            <th>Ngày sinh</th>
-                            <th>Số điện thoại</th>
-                            <th></th>
-
+                            <th>Phòng </th>
+                            <th>Khoa</th>
+                            <th>Thanh toán</th>
+                            <th>Trạng thái</th>
                         </tr>
                     </thead>
-                    @foreach($benhnhan as $key=> $bn)
-                    <tr>
-                        <td id="hello" data-label="Mã bệnh nhân :">{{($bn->MaBN)}}</td>
-                        <td data-label="Tên bệnh nhân :">{{($bn->TenBN)}}</td>
-                        <td data-label="Giới tính :"><?php if ($bn->gioitinh == 1) {
-                                                            echo "Nam";
-                                                        } else {
-                                                            echo "Nữ";
-                                                        } ?></td>
-                        <td data-label="Ngày sinh :">{{($bn->Ngaysinh)}}</td>
-                        <td data-label="Số điện thoại:">{{($bn->DienThoai)}}</td>
-                        <td><a class="hihi" data-id="{{($bn->MaBN)}}">Chi tiết</a></td>
-                    </tr>
-                    @endforeach
-                </table>
-              
+                    <tbody>
+                        @foreach($lichkham as $key=> $lk)
+                        <tr>
+                            <td data-label="Thời gian :">{{($lk->Buoi)}}-{{($lk->NgayTruc)}}</td>
+                            <td data-label="Số thứ tự :">{{($lk->STT)}}</td>
+                            <td data-label="Tên bệnh nhân :">{{($lk->TenBN)}}</td>
+                            <td data-label="Mã phòng  :">{{($lk->MaPhong)}}</td>
+                            <td data-label="Tên khoa :">{{($lk->TenKhoa)}}</td>
+                            <?php if ($lk->Thanhtoan == 0) {
+                                echo '  <td class="error" data-label="Thanh toán :">Trực tiếp</td>';
+                            } else {
+                                echo '<td class="success" data-label="Thanh toán :"> Online</td> ';
+                            } ?>
+                             <?php if ($lk->Trangthai == 0) {
+                                    echo '  <td class="error" data-label="Trạng thái :">Chưa khám </td>';
+                                } else if ($lk->Trangthai == 2) {
+                                    echo '<td class="success" data-label="Trạng thái :">Đã khám </td> ';
+                                }
+                             else if ($lk->Trangthai == 1){
+                                echo '<td class="error" data-label="Trạng thái :">Vắng  </td> ';
+                            } ?>
+                            
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table><?php if ($int > 4) { ?>
+                
+                <span> {{ $lichkham->render() }}</span>
+                    
+                    <?php } ?>
 
             </div>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $('.hihi').click(function() {
-                        var id = $(this).attr('data-id');
-                        $.ajax({
-                            url: '/benhvien3/trangcanhan/chi-tiet-benh-nhan/' + id,
-                            method: "GET",
-                            success: function(data) {
-                                data = JSON.parse(data);
-
-                                var resultajax = `    <h3>Thông tin bệnh nhân</h3>
-                <br>
-                <br>
-                <form  class="" action="{{URL::to('/trang-ca-nhan/cap-nhat')}}" method="post"
-                    enctype="multipart/form-data" >
-                    @csrf `;
-                                console.log(data);
-                                $('#form').show();
-                                for (let i = 0; i < data.length; i++) {
-                                    var gioitinh = "";
-                                    if (data[i].gioitinh == 0) {
-                                        gioitinh = "Nữ";
-                                    } else {
-                                        gioitinh = "Nam";
-                                    } //Ngày trực
-                                    resultajax += `  <div class="row">
-
-<div class="col-6"> 
-    <label class="form-label">Họ Tên :</label>
-    <input type="hidden" name="MaBN" value="`+data[i].MaBN+`">
-    <input name="ten" value="` + data[i].TenBN + `" class="form-control">
-</div>
-<div class="col-4">
-    <label class="form-label">Giới tính :</label>
-    <select name="gioitinh" class="form-control">
-        <option value="` + data[i].gioitinh + `">` + gioitinh + `</option>
-        <option value="1">Nam</option>
-        <option value="0">Nữ</option>
-    </select>
-</div>
-<div class="col-6">
-    <label class="form-label">Ngày sinh</label>
-    <input name="ngaysinh" type="date" value="` + data[i].Ngaysinh + `" class="form-control">
-</div>
-<div class="col-6">
-    <label class="form-label">Số điện thoại </label>
-    <input name="sdt" value="` + data[i].DienThoai + `" class="form-control">
-</div>
-<div class="col-6">
-    <label class="form-label">CMND</label>
-    <input name="cmnd" value="` + data[i].CMND + `" class="form-control">
-</div>
-
-<div class="col-6">
-    <label class="form-label">Địa chỉ</label>
-    <input name=diachi value="` + data[i].DiaChi + `"class="form-control">
-</div>
-<div class="col-6">
-    <label class="form-label">Tiền sử bệnh</label>
-    <textarea name="tiensubenh" value="` + data[i].Tiensubenh + `" class="form-control"></textarea>
-</div>
-
-<div class="col-2">
-    <label class="form-label">Hình ảnh</label>
-    <input name="hinh" type="file" class="form-control-file">
-    <br>
-</div>`
-                                    if ((data[i].hinh).length == 0) {
-                                        resultajax += ``
-
-                                    }else
-                                    {
-                                        resultajax += `<div class="col-3">
-
-<br>
-
-<img data-magnifyby="6" src="{{asset('./public/uploads/benhan/` + data[i].hinh + `')}}" height='100' alt='' />
-</div>`
-                                    }
-
-                                }
-                                var x = resultajax + ` </div>
-                    <button class="btn" type="submit">Cập nhật </button>
-                </form>`
-                                $('#form').html(x);
-                            }
-                        })
-                    })
-                });
-            </script>
+          
         </div>
 
     </div>
@@ -321,7 +249,7 @@
 
     }
 
-   
+    
     a:hover{
         color: black !important;
     }

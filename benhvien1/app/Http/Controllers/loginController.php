@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Routing\Route;
 use Symfony\Component\VarDumper\Cloner\Data;
-
+session_start();
 class loginController extends Controller
 {
     public function dangnhap(Request $re){
@@ -23,7 +23,7 @@ class loginController extends Controller
 
             Session::put('id-user',$result->MaTK); 
             Session::put('sodienthoai',$result->Sodienthoai);
-            Session::put('ten',$result->Ten);
+            Session::put('ten-user',$result->Ten);
             return view('home'); 
         }else{
             Session::put('thongbaodangnhap',"Số điện thoại hoặc mật khẩu không đúng !");
@@ -63,7 +63,7 @@ class loginController extends Controller
         public function dangxuat(){
             Session::put('id-user',""); 
             Session::put('sodienthoai',"");
-            Session::put('ten',"");
+            Session::put('ten-user',"");
             return view('home'); 
         }
 
