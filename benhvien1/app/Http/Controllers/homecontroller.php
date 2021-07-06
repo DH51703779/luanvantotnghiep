@@ -7,12 +7,25 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Mail;
 use PHPUnit\Framework\Constraint\Count;
 use Symfony\Component\VarDumper\Cloner\Data;
 
 session_start();
+
 class homecontroller extends Controller
 {
+    public function sendmail($re,$code){
+        $code = rand(1000,9999);
+        $to_name = " Medical ";
+        $to_email = $re->email;
+        $data = array("name"=>$re->ten,"body" => 'Vui lòng nhập mã :',"code"=>$code);
+        Mail::send('formmail',$data,function($message) use ($to_name,$to_email){
+            $message->to($to_email)->subject('Quên mật khẩu ');
+            $message->from($to_email,$to_name);
+        });
+
+    }
     public function Alogin(){
         $matk=Session::get('id-user');
             if($matk){
@@ -20,6 +33,9 @@ class homecontroller extends Controller
             }else{
               return  Redirect::to('/dangnhap')->send();
             }
+    }
+    public function quytrinh(){
+        return view('quytrinh');
     }
     public function dangnhap(){
         Session::put('thongbaodangnhap',"Đăng nhập để đăng ký lịch");

@@ -49,7 +49,10 @@ foreach ($lichtruc as $key => $value) {
     $LT[] = $value->NgayTruc;
 }
 $LT = array_unique($LT);
-$leng = count($LT);
+foreach($LT as $key=>$value){
+    $LT1[]=$value;
+}
+$leng = count($LT1);
 }
 for ($day = 1; $day <= $day_count; $day++, $str++) {
     $date = $ym . '-' . $day;
@@ -61,7 +64,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
     } else {
         if($count>0){
         for ($i = 0; $i < $leng; $i++) {
-            $NT = $LT[$i];
+            $NT = $LT1[$i];
             if (strtotime($date2) == strtotime($NT)) {
                 $week .= '<td data-id="' . $date2 . '" class="btnday" >' . $day;
                 $tag = true;

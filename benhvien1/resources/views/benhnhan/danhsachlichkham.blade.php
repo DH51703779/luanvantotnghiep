@@ -10,44 +10,7 @@
 
 
     <script type="text/javascript">
-        function thongtin() {
-            const x = document.querySelector('#form')
-            x.innerHTML = `  <h3>Thông tin tài khoản</h3>
-                <br>
-                <br>
-                    
-                 @foreach($taikhoan as $key=>$tk)
-                 <form id="contact-form" action="#" method="POST">
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-box user-icon mb-30">
-                                    <i class="fas fa-user"></i>&nbsp;&nbsp;&nbsp; <input type="text" name="name" value="{{($tk->Ten)}}" >
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-box email-icon mb-30">
-                                    <i class="fas fa-phone"></i>&nbsp;&nbsp;&nbsp; <input type="text" value="{{($tk->Sodienthoai)}}" name="email" >
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-box email-icon mb-30">
-                                    <i class="fas fa-map-marker-alt"></i></i>&nbsp;&nbsp;&nbsp; <input type="text" value="{{($tk->Diachi)}}" name="email" >
-                                    </div>
-                                </div>
-                              
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-box email-icon mb-30">
-                                    <i class="fas fa-venus-mars"></i></i>&nbsp;&nbsp;&nbsp; <input type="text"  name="email" >
-                                    </div>
-                                </div>
-                             
-                                 
-                                
-                            </div>
-                        </form>
-                        @endforeach  `;
-        };
-
+      
 
         function lichkham() {
             const x = document.querySelector('#form')
@@ -60,8 +23,8 @@
 </head>
 
 <hr>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fas fa-tags"></i><a onclick="thongtin()" class="btnx form-group">
-                    Thông tin tài khoản &nbsp;&nbsp;&nbsp;
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="thongtin()" class="btnx form-group">
+                     &nbsp;&nbsp;&nbsp;
                 </a>
                 <i class="fas fa-tags"></i> <a href="{{URL::to('/trangcanhan')}}" class="btnx form-group">
                     Hồ sơ bệnh nhân &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

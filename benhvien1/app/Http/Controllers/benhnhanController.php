@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\VarDumper\Cloner\Data;
 session_start();
 class benhnhanController extends Controller
@@ -59,9 +60,9 @@ class benhnhanController extends Controller
                 $data['DiaChi'] = $re->sonha . " " . $re->duong . " ," . $phuong . ", " . $quan . $tp;
                 DB::table('benhnhan')->insert($data);
             }
-            $BN = DB::table('benhnhan')->where('MaBN', $re->MaBN)->get();
-            foreach ($BN as $key)
-                Session::put('MaBN', $key->MaBN);
+            $BN = DB::table('benhnhan')->where('TenBN', $re->ten)->where('DienThoai', $re->sdt)->where('MaTK',$id)->orWhere('MaBN', $re->MaBN)->limit(1)->get();
+            foreach($BN as $key=>$value)
+            Session::put('MaBN', $value->MaBN);
 
             return view('thanhtoan')->with('result', $result)->with('BN', $BN);
         }else{
@@ -78,9 +79,9 @@ class benhnhanController extends Controller
          
         }
     }
-        $BN = DB::table('benhnhan')->where('TenBN', $re->ten)->where('DienThoai', $re->sdt)->orWhere('MaBN',$re->MaBN)->get();
-        foreach ($BN as $key)
-            Session::put('MaBN', $key->MaBN);
+         $BN = DB::table('benhnhan')->where('TenBN', $re->ten)->where('DienThoai', $re->sdt)->where('MaTK',$id)->orWhere('MaBN', $re->MaBN)->limit(1)->get();
+            foreach($BN as $key=>$value)
+            Session::put('MaBN', $value->MaBN);
 
         return view('thanhtoan')->with('result', $result)->with('BN', $BN);
     }
@@ -135,6 +136,7 @@ class benhnhanController extends Controller
     public function thanhcong($key)
     {
         $id = Session::get('id-user');
+        $mail = Session::get('email-user');
         $MaBN = Session::get('MaBN');
         $MaLt = Session::get('MaL');
         $data['MaBN'] = $MaBN;
@@ -142,14 +144,35 @@ class benhnhanController extends Controller
         $data['STT'] = $count + 1;
         $data['MaLT'] = $MaLt;
         $data['Thanhtoan'] = $key;
+        if($key==0){
+            $thanhtoan = "Chưa thanh toán ";
+        }else{
+            $thanhtoan =" Đã thanh toán";
+        }
         $data['Trangthai'] = 0;
         $result = DB::table('bacsi')->Join('lichtruc', 'bacsi.MaBS', '=', 'lichtruc.MaBS')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
             ->where('lichtruc.MaLT', $MaLt)->get();
         foreach ($result as $key)
             $data['TongTien'] = $key->gia;
+            $phong = $key->MaPhong;
+            $Khoa = $key->TenKhoa;
+            $ngaykham= $key->NgayTruc;
+            $bacsi = $key->TenBS;
         $data['MaBS'] = $key->MaBS;
-
         DB::table('lichkham')->insert($data);
+
+        //gui mail 
+        $BN = DB::table('benhnhan')->where('MaBN',$MaBN)->first();
+        $to_name = " Medical ";
+        $to_email = $mail;
+        $data = array("name"=>$BN->TenBN,"ngaysinh"=>$BN->Ngaysinh,
+        "phong"=>$phong,"STT"=>$count+1,
+        "BS"=>$bacsi,"Khoa"=>$Khoa,"ngaykham"=>$ngaykham
+        ,"thanhtoan"=>$thanhtoan);
+        Mail::send('phieukham',$data,function($message) use ($to_name,$to_email){
+            $message->to($to_email)->subject('Phiếu khám bệnh ');
+            $message->from($to_email,$to_name);
+        });
         return redirect('/trang-ca-nhan/lich-kham/');
     }
     public function chitietbenhnhan($MaBN)

@@ -138,7 +138,7 @@
                         //Hết 
                         if (flag == 'Lịch khám') {
                             $.ajax({
-                                url: '/benhvien3/lichkham/' + id,
+                                url: '/benhvien1/lichkham/' + id,
                                 method: "GET",
                                 success: function(data) {
                                     data = JSON.parse(data);

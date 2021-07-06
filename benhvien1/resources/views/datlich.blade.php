@@ -3,6 +3,7 @@
 
     <!-- Hero End -->
     <!--? About Start-->
+    <hr>
     <div class="about-area section-padding2">
         <div class="container">
             <div class="row">

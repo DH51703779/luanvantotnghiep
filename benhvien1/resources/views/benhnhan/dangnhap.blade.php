@@ -46,18 +46,20 @@ if($error){
 <h3 class="Success"><?php echo $success ; ?></h3>
 <h3 class="error"><?php echo $error ; ?></h3>
 <div class="wrap-input100 validate-input" >
-<input required class="input100"  type="text" id="tenx"  name="ten" placeholder="Họ và tên">
+<input required class="input100"  type="text" id="tenx"   name="ten" placeholder="Họ và tên">
 
 </div>
 
 
 <div class="wrap-input100 validate-input">
-<input id="aa" placeholder="Nhập số điện thoại" required class="input100" type="phone" name="phone">                        
+<input id="aa" placeholder="Nhập số điện thoại" pattern="[0-9]{10}"  title="Số điện thoại gồm 10 số "  required class="input100" type="phone" name="phone">                        
+ </div>
+ <div class="wrap-input100 validate-input">
+<input id="aa" placeholder="Nhập Email"    required class="input100" type="email" name="email">                        
  </div>
 
-
 <div class="wrap-input100 validate-input" data-validate="Password is required">
-<input required class="input100 input101" id="pass1"  type="password" name="pass1" placeholder="Mật khẩu">
+<input required class="input100 input101" id="pass1" pattern=".{6,}" title="Mật khẩu ít nhất 6 ký tự"  type="password" name="pass1" placeholder="Mật khẩu">
 
 </div>
 <div class="wrap-input100 validate-input" data-validate="Password is required">
@@ -89,7 +91,7 @@ if($error){
 
 </form>
 <div class="login100-more">
-<img height="720" width="610" src="{{asset('public/frontend/img/logo/medical.jpg')}}" alt="">
+<img height="780" width="610" src="{{asset('public/frontend/img/logo/thamlang.jpg')}}" alt="">
 </div>`;
     };
 
@@ -166,6 +168,9 @@ if($error){
                             <button id="dangky" onclick="aaa()"  class="login100-form-btn">
                                 Đăng Ký
                             </button>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <p><a href="{{URL::to('/quenmatkhau')}}">Quên mật khẩu ?</a></p>
                         </div>
                         <div class="text-center p-t-46 p-b-20">
                             <span class="txt2">

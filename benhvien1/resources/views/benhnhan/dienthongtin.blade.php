@@ -13,63 +13,21 @@ $ten = Session::get('ten');
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
-        function doi() {
-            const x = document.querySelector('#form')
-            x.innerHTML = `  <div class="col-12">
-                          <h3 class="">Thông tin người đặt</h3>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <input readonly value="<?php echo $ten; ?>" class="form-control valid" name="tennguoidat" type="text"
-                                    placeholder="Nhập tên người đặt">
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <input readonly  value="<?php echo $sodienthoai; ?>" class="form-control valid" name="sdtnguoidat" type="text"
-                                    placeholder="Nhập số điện thoại">
-                            </div>
-                        </div>`;
-        };
-
-        function doi1() {
-            const x = document.querySelector('#form')
-            x.innerHTML = ``;
-        }
-
         function hi() {
-            //kiem tra trinh duyet co ho tro File API
-            if (window.File && window.FileReader && window.FileList && window.Blob) {
-                // lay dung luong va kieu file tu the input file
-                var fsize = $('#hinh')[0].files[0].size;
-                var ftype = $('#hinh')[0].files[0].type;
-                var fname = $('#hinh')[0].files[0].name;
-
-                switch (ftype) {
-                    case 'image/png':
-                    case 'image/gif':
-                    case 'image/jpeg':
-                    case 'image/pjpeg':
-
-                        break;
-                    default: {
-                        alert("sai định dạng hình");
-
-                        const x = document.querySelector('#hihihi')
-                        x.innerHTML =
-                            ` <form  class="form-contact contact_form" action="{{URL::to('#')}}" method="post"
-                    enctype="multipart/form-data" >
-                    @csrf`;
-                        window.location.reload(false);
-
-
-                    };
-
-                }
-
-            } else {
-                alert("Please upgrade your browser, because your current browser lacks some new features we need!");
+            var a = $('#hinh').val();
+            var duoi = a.slice(-3);
+            var duoi1 = duoi.toLowerCase();
+            if(duoi1.length>0){
+            const hople = ["jpg", "png", "peg"];
+            var a = hople.includes(duoi1);
+           if(a==true){
+               
+           }else{
+               alert("Không hợp lệ ");
+               $('#hinh').val('');
+           }
             }
+
         };
     </script>
     <script type="text/javascript">
@@ -78,7 +36,7 @@ $ten = Session::get('ten');
                 var id = $(this).val();
                 if (id.length > 0) {
                     $.ajax({
-                        url: '/benhvien3/dienthongtin/lay-benh-nhan/' + id,
+                        url: '/benhvien1/dienthongtin/lay-benh-nhan/' + id,
                         method: "GET",
                         success: function(data) {
                             data = JSON.parse(data);
@@ -106,9 +64,9 @@ $ten = Session::get('ten');
 
                     <div class="col-sm-8">
                         <div class="form-group">
-                            Họ và tên: <input value="` + data[i].TenBN+ `" class="form-control" name="ten" required type="text"
+                            Họ và tên: <input value="` + data[i].TenBN + `" class="form-control" name="ten" required type="text"
                                 placeholder="Nhập tên bệnh nhân">
-                            <input name="MaBN" value="`+data[i].MaBN+`" type="hidden"  >
+                            <input name="MaBN" value="` + data[i].MaBN + `" type="hidden"  >
                         </div>
                     </div>
 
@@ -130,14 +88,14 @@ $ten = Session::get('ten');
                     </div>
                     <div class="col-sm-8">
                         <div class="form-group">
-                            Số điện thoại :<input id="sdt" class="form-control valid" value="`+data[i].DienThoai+`" required name="sdt" type="text"
+                            Số điện thoại :<input id="sdt" class="form-control valid" value="` + data[i].DienThoai + `" required name="sdt" type="text"
                                 placeholder="Nhập số điện thoại">
                         </div>
                     </div>
 
                     <div class="col-sm-8">
                         <div class="form-group">
-                            CMND :<input class="form-control" value="`+data[i].CMND+`" name="cmnd" type="text" placeholder="CMND/CCCD">
+                            CMND :<input class="form-control" value="` + data[i].CMND + `" name="cmnd" type="text" placeholder="CMND/CCCD">
                         </div>
                     </div>
                     &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
@@ -149,13 +107,13 @@ $ten = Session::get('ten');
                   
                     <div class="col-sm-8">
                         <div class="form-group">
-                            Địa chỉ :<input class="form-control" name="diachi" value="`+data[i].DiaChi+`"  type="text" placeholder="Số nhà">
+                            Địa chỉ :<input class="form-control" name="diachi" value="` + data[i].DiaChi + `"  type="text" placeholder="Số nhà">
                         </div>
                     </div>
                 
                     <div class="col-sm-5">
                         <div class="form-group">
-                            Tiền sử bệnh :<textarea value="`+data[i].tiensubenh+`" class="form-control" name="tiensubenh" 
+                            Tiền sử bệnh :<textarea value="` + data[i].tiensubenh + `" class="form-control" name="tiensubenh" 
                                 placeholder="Tiền sử bệnh"></textarea>
                         </div>
                     </div>
@@ -164,19 +122,18 @@ $ten = Session::get('ten');
                             <input id="hinh" class="form-control" name="hinh" type="file" placeholder="">
                         </div>
                     </div>`
-                    if ((data[i].hinh).length == 0) {
-                                        resultajax += ``
+                                if ((data[i].hinh).length == 0) {
+                                    resultajax += ``
 
-                                    }else
-                                    {
-                                        resultajax += `<div class="col-3">
+                                } else {
+                                    resultajax += `<div class="col-3">
 
 <br>
 
 <img data-magnifyby="6" src="{{asset('./public/uploads/benhan/` + data[i].hinh + `')}}" height='100' alt='' />
 </div>
 `
-                                    }
+                                }
 
 
 
@@ -217,17 +174,17 @@ $ten = Session::get('ten');
             </div>
             <div id="f" class="col-lg-8">
 
-
-                <div class="" id="hihihi">
+             
                     <form class="" action="{{URL::to('/dienthongtin')}}" method="post" enctype="multipart/form-data">
                         @csrf
-                </div>
-                <div  class="row">
-                    <br>
-                    <br>
-                  
+            
+                <div class="row">
+             
+
                     <div class="col-12">
+                    <br>
                         <h3 class="">Thông tin bệnh nhân</h3>
+                        <br>
                     </div>
                     <br>
                     <br>
@@ -349,15 +306,15 @@ $ten = Session::get('ten');
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">(hình đính kèm)
-                            <input id="hinh" class="form-control" name="hinh" type="file" placeholder="">
+                            <input onchange="hi()" id="hinh" class="form-control" name="hinh" type="file" placeholder="">
                         </div>
                     </div>
 
                     <div class="form-group col-5">
-                    <button id="submit" onclick="hi()" type="submit" class="button  boxed-btn">Hoàn tất </button>
+                        <button id="submit" onclick="hi()" type="submit" class="button  boxed-btn">Hoàn tất </button>
+                    </div>
                 </div>
-                </div>
-              
+
                 </form>
             </div>
 

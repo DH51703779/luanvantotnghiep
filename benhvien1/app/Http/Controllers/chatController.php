@@ -26,7 +26,7 @@ class chatController extends Controller
         
         foreach($khoa as $key ){
             $MaKhoa= $key->MaKhoa;
-            $bacsi = DB::table('taiKhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('MaKhoa',$MaKhoa)->get();
+            $bacsi = DB::table('taikhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('MaKhoa',$MaKhoa)->get();
             $a[] = $bacsi;
             }
         return view('bacsi.list_chat')->with('khoa',$khoa)->with('bacsi',$a);
@@ -35,7 +35,7 @@ class chatController extends Controller
     public function box_chat($Manhan){
         $this->Alogin();
         $matk =Session::get('matk-bacsi');
-        $bacsi = DB::table('taiKhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('taikhoan.MaTK',$Manhan)->first();
+        $bacsi = DB::table('taikhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('taikhoan.MaTK',$Manhan)->first();
         $Messgui = DB::table('tinnhan')->where([['Magui','=',$matk],['Manhan','=',$Manhan]])->orWhere([['Magui','=',$Manhan],['Manhan','=',$matk]])->orderBy('MaTN','ASC')->get();
         $c = DB::table('tinnhan')->where([['Magui','=',$matk],['Manhan','=',$Manhan]])->orWhere([['Magui','=',$Manhan],['Manhan','=',$matk]])->count();
         $date['thoigian'] =date('Y-m-d H:i:s');;
@@ -47,14 +47,14 @@ class chatController extends Controller
     }
     public function box_chat1($Manhan){
         $matk =Session::get('matk-bacsi');
-        $bacsi = DB::table('taiKhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('taikhoan.MaTK',$Manhan)->first();
+        $bacsi = DB::table('taikhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('taikhoan.MaTK',$Manhan)->first();
         $Messgui = DB::table('tinnhan')->where([['Magui','=',$matk],['Manhan','=',$Manhan]])->orWhere([['Magui','=',$Manhan],['Manhan','=',$matk]])->orderBy('MaTN','ASC')->get();
         $c = DB::table('tinnhan')->where([['Magui','=',$matk],['Manhan','=',$Manhan]])->orWhere([['Magui','=',$Manhan],['Manhan','=',$matk]])->count();
         echo $Messgui;
     }
     public function chatkhoa($MaKhoa){
         
-        $bacsi = DB::table('taiKhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('MaKhoa',$MaKhoa)->get();
+        $bacsi = DB::table('taikhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('MaKhoa',$MaKhoa)->get();
     echo $bacsi;
     }
     public function send(Request $re){
@@ -91,7 +91,7 @@ class chatController extends Controller
         foreach($tinnhan as $l){
             $MG = $l->Magui;
             $data["Magui"]=$MG;
-            $bacsi = DB::table('taiKhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('taikhoan.MaTK',$MG)->first();
+            $bacsi = DB::table('taikhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('taikhoan.MaTK',$MG)->first();
             $data["TenBS"]=$bacsi->TenBS;
             $Count = DB::table('tinnhan')->where('Manhan',$matk)->where('Magui',$MG)->where('thoigian',null)->count();
             $data["count"]=$Count;
@@ -103,7 +103,7 @@ class chatController extends Controller
         echo $hihi;
     }
     public function timkiem($key){
-        $bacsi = DB::table('taiKhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('bacsi.TenBS', 'like', '%' . $key . '%')->get();
+        $bacsi = DB::table('taikhoan')->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')->where('bacsi.TenBS', 'like', '%' . $key . '%')->get();
         echo $bacsi;
     }
     

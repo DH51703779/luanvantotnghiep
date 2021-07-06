@@ -157,8 +157,8 @@
     }
 
     .padding {
-        padding-top: 2rem !important;
-        padding-left: 10rem !important;
+        padding-top: 2rem ;
+        padding-left: 10rem ;
     }
 
     .bia {
@@ -166,5 +166,11 @@
         height: 12rem !important;
         width: 12rem !important;
         border: 1px solid black !important;
+    }
+    @media screen and (max-width: 600px) {
+        .padding {
+        padding-top: 0rem !important;
+        padding-left: 0rem !important;
+    }
     }
 </style>
