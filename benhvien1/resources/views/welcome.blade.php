@@ -53,7 +53,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2 col-md-1">
                             <div class="logo">
-                                <a href="index.html"><img src="{{asset('public/frontend/img/logo/logo.png')}}"
+                                <a ><img src="{{asset('public/frontend/img/logo/logo.png')}}"
                                         alt=""></a>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                     <nav>
                                         <ul id="navigation">
                                             <li><a href="{{URL::to('/')}}">Trang chủ </a></li>
-
+                                            <li><a href="{{URL::to('/quy-trinh')}}">Quy trình</a></li>
                                             <li><a href="{{URL::to('/datlich')}}">Đặt lịch</a></li>
                                             <?php $taikhoan = Session::get('ten-user');
                                         $id = Session::get('id-user');
@@ -75,6 +75,7 @@
                                                 <ul class="submenu">
                                                     <li><a href="{{URL::to('/trangcanhan')}}">Quản Lý</a></li>
                                                     <li> <a href="{{URL::to('/dangxuat')}}" class="">Đăng xuất</a></li>
+                                                    <li><a href="{{URL::to('/doimatkhau')}}">Đổi mật khẩu</a></li>
 
                                                 </ul>
                                             </li>
@@ -110,8 +111,35 @@
     </header>
 
     <main>
+      
         @yield('content')
         @yield('datlich')
+        <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100324542198293");
+      chatbox.setAttribute("attribution", "biz_inbox");
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v11.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     </main>
     <footer>
         <!--? Footer Start-->
@@ -120,21 +148,26 @@
                 <div class="footer-top footer-padding">
                     <div class="row d-flex justify-content-between">
                         <div class="col-xl-3 col-lg-3 col-md-4 col-sm-8">
-                            <div class="single-footer-caption mb-50">
+                            
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15671.846569277608!2d106.6409201!3d10.8905197!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1623338143080!5m2!1svi!2s" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                                </div>
-                            </div>
+                                <img src="{{asset('public/frontend/img/logo/logo.png')}}"
+                                        alt="">
+                                        <img height="100" width="200" src="{{asset('public/frontend/img/logo/yte.png')}}"
+                                        alt="">
+                                        <br>
+                                        <img style="padding-left:30px ;" height="50" width="100" src="{{asset('public/frontend/img/logo/face.png')}}"
+                                        alt="">
+                               
+                                        </div>
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-5">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-tittle">
-                                    <h4>About Us</h4>
+                                    <h4></h4>
                                     <div class="footer-pera">
-                                        <p class="info1">Lorem igpsum doldfor sit amet, adipiscing elit, sed do eiusmod
-                                            tempor cergelit rgh. </p>
-                                        <p class="info1">Lorem ipsum dolor sit amet, adipiscing elit.</p>
+                                        <p class="info1">Bệnh viên hàng đầu về sức khỏe con người </p>
+                                        <p class="info1">Luôn lắng nghe , luôn thấu hiểu , luôn tận tụy</p>
                                     </div>
                                 </div>
                             </div>
@@ -142,8 +175,9 @@
                         <div class="col-xl-4 col-lg-4 col-md-6 col-sm-8">
                             <div class="single-footer-caption mb-50">
                                 <div class="footer-number mb-50">
-                                    <h4><span>+564 </span>7885 3222</h4>
-                                    <p>youremail@gmail.com</p>
+                                    <h4><span>+084 </span>36489778</h4>
+                                    <p>180 Cao Lỗ Quận 8 Hồ chí minh</p>
+                                    <p>medical@gmail.com</p>
                                 </div>
                                 <!-- Form -->
                                 <div class="footer-form">
@@ -151,15 +185,11 @@
                                         <form target="_blank"
                                             action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
                                             method="get" class="subscribe_form relative mail_part" novalidate="true">
-                                            <input type="email" name="EMAIL" id="newsletter-form-email"
-                                                placeholder=" Email Address " class="placeholder hide-on-focus"
-                                                onfocus="this.placeholder = ''"
-                                                onblur="this.placeholder = 'Your email address'">
+                                         
                                             <div class="form-icon">
-                                                <button type="submit" name="submit" id="newsletter-submit"
-                                                    class="email_icon newsletter-submit button-contactForm">
-                                                    Send
-                                                </button>
+                                                <a href="{{URL::to('/bacsi')}}" class="btn">
+                                                  Nội bộ
+                                                </a>
                                             </div>
                                             <div class="mt-10 info"></div>
                                         </form>
@@ -182,13 +212,16 @@
     <!-- JS here -->
 
     <script src="{{asset('public/frontend/js/vendor/modernizr-3.5.0.min.js')}}"></script>
-    <!-- Jquery, Popper, Bootstrap -->
-
+ 
     <script src="{{asset('public/frontend/js/vendor/jquery-1.12.4.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/popper.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/bootstrap.min.js')}}"></script>
     <!-- Jquery Mobile Menu -->
     <script src="{{asset('public/frontend/js/jquery.slicknav.min.js')}}"></script>
+
+
+
+
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
     <script src="{{asset('public/frontend/js/owl.carousel.min.js')}}"></script>
@@ -200,25 +233,16 @@
 
     <!-- Date Picker -->
     <script src="{{asset('public/frontend/js/gijgo.min.js')}}"></script>
-    <script src="{{asset('public/frontend/js/moment.min.js')}}"></script>
+
     <script src="{{asset('public/frontend/js/jquery.magnifier.js')}}"></script>
    
-    <!-- Nice-select, sticky -->
-    <!-- <script src="{{asset('public/frontend/js/jquery.nice-select.min.js')}}"></script>
-    <script src="{{asset('public/frontend/js/jquery.sticky.js')}}"></script>
-     -->
-    <!-- counter , waypoint -->
-    <!-- <script src="{{asset('public/frontend/js/jquery.counterup.min.js')}}"></script>
-    <script src="{{asset('public/frontend/js/waypoints.min.js')}}"></script>
-    <script src="{{asset('public/frontend/js/jquery.countdown.min.js')}}"></script> -->
-    <!-- contact js -->
-    <script src="{{asset('public/frontend/js/contact.js')}}"></script>
+
     <script src="{{asset('public/frontend/js/jquery.form.js')}}"></script>
     <script src="{{asset('public/frontend/js/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('public/frontend/js/mail-script.js')}}"></script>
-    <script src="{{asset('public/frontend/js/jquery.ajaxchimp.min.js')}}"></script>
 
-    <!-- Jquery Plugins, main Jquery -->
+  
+
+    
     <script src="{{asset('public/frontend/js/plugins.js')}}"></script>
     <script src="{{asset('public/frontend/js/main.js')}}"></script>
 

@@ -37,6 +37,7 @@ $ten = Session::get('ten');
                 </a>
 
             </div>
+           
             <div class="col-sm-4">
             <h2> Lịch khám bệnh</h2>
             @foreach( $BN as $key=>$value)

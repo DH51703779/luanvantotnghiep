@@ -30,7 +30,7 @@ class BacsiController extends Controller
     public function bacsi_layout(){
         $this->Authlogin();
         $matk=Session::get('matk-bacsi');
-        $bacsi = DB::table('taiKhoan')
+        $bacsi = DB::table('taikhoan')
         ->Join('bacsi', 'taikhoan.MaBS', '=', 'bacsi.MaBS')
         ->join('khoa','bacsi.MaKhoa','=','khoa.MaKhoa')
         ->where('MaTK',$matk)->get();

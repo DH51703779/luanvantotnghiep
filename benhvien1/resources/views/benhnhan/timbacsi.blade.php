@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('datlich')
-
+<hr>
     <!-- Hero End -->
     <div class="department_area section-padding2">
         <div class="container">

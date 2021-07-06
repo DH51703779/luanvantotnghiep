@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\homecontroller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
-
+Route::post('/send/mail','SendMail@sendmail');
+Route::get('/send/message','SMScontroller@send');
 
 // chat
 Route::get('/bac-si/chat','chatController@listchat');
@@ -40,10 +42,15 @@ route::post('/login','loginController@dangnhap');
 route::post('/dangky','loginController@dangky');
 route::get('/test/{key}','loginController@kiemtra');
 route::get('/dangxuat','loginController@dangxuat');
+route::get('/quenmatkhau','loginController@quenmatkhau');
+route::post('/layma','loginController@layma');
+route::post('/xacthuc','loginController@xacthuc');
+route::post('/cap-nhat-mat-khau','loginController@capnhatmatkhau');
+route::get('/doimatkhau','loginController@doimatkhau');
 
 // home 
 Route::get('/datlich', 'homecontroller@layout');
-
+Route::get('/quy-trinh', 'homecontroller@quytrinh');
 Route::get('/dsbacsi/{MaKhoa}', 'homecontroller@dsbacsi');
 Route::get('/dskhoa/{key}', 'homecontroller@dskhoa');
 
@@ -55,7 +62,7 @@ Route::get('/theongay','homecontroller@homnay');
 Route::get('dsbacsi/ngaytruc/{ngay}','homecontroller@ngaytruc');
 
 Route::post('/dienthongtin','benhnhanController@diendangky');// Điền thông tin bệnh nhân
-Route::get('/dienthongtin/lay-benh-nhan/{MaBN}','benhnhancontroller@chitietbenhnhan');
+Route::get('/dienthongtin/lay-benh-nhan/{MaBN}','benhnhanController@chitietbenhnhan');
 //benhnhan
 Route::get('/thanhcong/{key}','benhnhanController@thanhcong');
 Route::get('/trangcanhan','benhnhanController@trangcanhan');
@@ -151,4 +158,3 @@ Route::get('/ds-LTruc', 'QLLichTruc@ds_LTruc');
 Route::get('/edit-LTruc/{Ma_LTruc}', 'QLLichTruc@edit_LTruc');
 Route::post('/update-LTruc/{Ma_LTruc}', 'QLLichTruc@update_LTruc');
 Route::get('/delete-LTruc/{Ma_LTruc}', 'QLLichTruc@delete_LTruc');
-
