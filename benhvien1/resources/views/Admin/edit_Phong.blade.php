@@ -3,10 +3,16 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Cập Nhật Phòng</h5>
+                                <h5 style="text-align: center; font-size: 25px;" class="card-title">Cập Nhật Phòng</h5>
                                
                                  @foreach ($edit_Phong as $key => $edit_value)
+                                   
+                                    <form action="{{URL::to('/ds-Phong')}}" method="get">
                                      
+                                    <div class="card-body">
+                                              <button type="submit" class="btn btn-secondary">Quay lại</button>
+                                    </div>
+                                  </form>
                                
                                 <form role="form" action="{{URL::to('/update-Phong/'.$edit_value->MaPhong)}}" method="post"  enctype="multipart/form-data">
                                     {{csrf_field()}}

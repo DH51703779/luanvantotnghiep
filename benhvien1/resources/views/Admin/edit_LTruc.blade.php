@@ -4,19 +4,25 @@
                             <div class="card-body">
                                 <h5 style="text-align: center; font-size: 25px;" class="card-title">Cập Nhật Lịch Trực </h5>    
                                  @foreach ($edit_LTruc as $key => $edit_value)
-
+  
+                                    <form action="{{URL::to('/ds-LTruc')}}" method="get">
+                                     
+                                    <div class="card-body">
+                                              <button type="submit" class="btn btn-secondary">Quay lại</button>
+                                    </div>
+                                  </form>
                        
                                 <form role="form" action="{{URL::to('/update-LTruc/'.$edit_value->MaLT)}}" method="post">
                                     {{csrf_field()}}
                                 <div class="form-group row">
-                                    <label class="col-md-3 m-t-15">Tên Bác Sĩ</label>
+                                    <label class="col-md-3 m-t-15">Tên Bác Sĩ -- Khoa</label>
                                     <div class="col-md-9">
                                         <select name="MaBS" class="select2 form-control custom-select" style="width: 100%; height:36px;">
                                              @foreach ($ds_bacsi as $key => $value)
                                                 @if($value->MaBS==$edit_value->MaBS)
-                                                <option selected value="{{$value->MaBS}}">{{$value->TenBS}}</option>
+                                                <option selected value="{{$value->MaBS}}">{{$value->TenBS}} </option>
                                                 @else 
-                                                    <option  value="{{$value->MaBS}}">{{$value->TenBS}}</option>
+                                                    <option  value="{{$value->MaBS}}">{{$value->TenBS}} </option>
                                                 @endif
                                                 @endforeach
                                         </select>
@@ -43,7 +49,7 @@
                                     </div>                     
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button  type="Submit" class="btn btn-primary">Submit</button>
+                                    <button  type="Submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </div>
                         </form>

@@ -3,10 +3,16 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Cập Nhật Khoa</h5>
+                               <h5 style="text-align: center; font-size: 25px;" class="card-title">Cập Nhật Khoa</h5>
                                
                                  @foreach ($edit_Khoa as $key => $edit_value)
                                      
+                                    <form action="{{URL::to('/ds-Khoa')}}" method="get">
+                                     
+                                    <div class="card-body">
+                                              <button type="submit" class="btn btn-secondary">Quay lại</button>
+                                    </div>
+                                  </form>
                                
                                 <form role="form" action="{{URL::to('/update-Khoa/'.$edit_value->MaKhoa)}}" method="post"  enctype="multipart/form-data">
                                     {{csrf_field()}}
@@ -23,10 +29,16 @@
                                         </div>
                                     </div>
                                       <div class="form-group row">
+                                        <label for="lname" class="col-md-3 m-t-15">Giá</label>
+                                        <div class="col-sm-9">
+                                            <input required value="{{$edit_value->gia}}" name="gia" type="text" class="form-control" id="lname" placeholder="Nhập Giá">
+                                        </div>
+                                    </div>
+                                      <div class="form-group row">
                                             <label class="col-md-3">Hinh</label>
                                             <div class="col-md-9">
                                                 <div class="custom-file">
-                                                    <input name="Hinh" type="file" class="custom-file-input" id="validatedCustomFile" >
+                                                    <input value="{{$edit_value->Hinh}}" name="Hinh" type="file" class="custom-file-input" id="validatedCustomFile" >
                                                     <label  class="custom-file-label" for="validatedCustomFile">Chọn Ảnh...</label>
                                                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                                                     

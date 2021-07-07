@@ -17,7 +17,7 @@
                                         Session::put('message',null);
                                     }
                                  ?>
-                                <form role="form" action="{{URL::to('/save-bacsi')}}" method="post">
+                                <form role="form" action="{{URL::to('/save-bacsi')}}" method="post" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                 <div class="form-group row">
                                         <label for="fname" class="col-md-3 m-t-15">Tên</label>
@@ -83,6 +83,7 @@
                                         </div>
                                     </div>
                                 </div>
+                             
                                    <div class="form-group row">
                                     <label class="col-md-3">Trạng Thái</label>
                                     <div class="col-md-9">
@@ -97,9 +98,20 @@
                                         <input value="1" readonly required name="TrangThaiBS" type="text" class="form-control" id="fname">
                                     </div>
                                 </div>
+                                  <div class="form-group row">
+                                            <label class="col-md-3">Hình ảnh</label>
+                                            <div class="col-md-9">
+                                                <div class="custom-file">
+                                                    <input name="hinh" type="file" class="custom-file-input" id="validatedCustomFile" >
+                                                    <label  class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                  
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button  type="Submit" class="btn btn-primary">Submit</button>
+                                    <button  type="Submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </div>
                         </form>

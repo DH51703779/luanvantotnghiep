@@ -72,6 +72,7 @@ class QLKhoa extends Controller
     	$data = array();
     	$data['MaKhoa']=$request -> MaKhoa;
     	$data['TenKhoa']=$request -> TenKhoa;
+      $data['gia']=$request -> gia;
   		$get_image = $request ->file('Hinh');
       if($get_image){
         $get_name_image= $get_image->getClientOriginalName();
@@ -83,6 +84,7 @@ class QLKhoa extends Controller
       Session::put('message',"Sửa Thành Công!!!");
       return Redirect::to('/ds-Khoa');
       }
+      $data['Hinh']='';
       DB::table('khoa')->where('MaKhoa',$Ma_Khoa)->update($data);
   		Session::put('message',"Sửa Thành Công!!!");
     	return Redirect::to('/ds-Khoa');

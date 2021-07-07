@@ -61,7 +61,7 @@ span.fa.fa-times-circle {
               </span></td>
             <td>
               <a href="{{URL::to('/edit-Phong/'.$value->MaPhong)}}" class="active" ui-toggle-class="" style="font-size: 15px;">
-                  <i class="fa fa-pencil-square-o text-success text-active"></i></a>
+                  <i class="fa fa-edit"></i></a>
             </td>
           </tr>
            @endforeach

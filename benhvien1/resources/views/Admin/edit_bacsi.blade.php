@@ -4,9 +4,15 @@
                             <div class="card-body">
                                 <h5 style="text-align: center; font-size: 25px;" class="card-title">Cập Nhật Bác Sĩ</h5>    
                                  @foreach ($edit_bacsi as $key => $edit_value)
-
+                                   
+                                    <form action="{{URL::to('/ds-bacsi')}}" method="get">
+                                     
+                                    <div class="card-body">
+                                              <button type="submit" class="btn btn-secondary">Quay lại</button>
+                                    </div>
+                                  </form>
                        
-                                <form role="form" action="{{URL::to('/update-bacsi/'.$edit_value->MaBS)}}" method="post">
+                                <form role="form" action="{{URL::to('/update-bacsi/'.$edit_value->MaBS)}}" method="post" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                 <div class="form-group row">
                                         <label for="fname" class="col-md-3 m-t-15">Tên</label>
@@ -78,12 +84,23 @@
                                             <label class="custom-control-label" for="customControlValidation2">Nữ</label>
                                         </div>
                                     </div>
-                                </div>                            <div class="border-top">
+                                </div>  
+                                <div class="form-group row">
+                                            <label class="col-md-3">Hình ảnh</label>
+                                            <div class="col-md-9">
+                                                <div class="custom-file">
+                                                    <input value="{{$edit_value->hinh}}" name="hinh" type="file" class="custom-file-input" id="validatedCustomFile" >
+                                                    <label  class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                                                </div>
+                                            </div>
+                                        </div>                   
+                            <div class="border-top">
                                 <div class="card-body">
-                                    <button  type="Submit" class="btn btn-primary">Submit</button>
+                                    <button  type="Submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </div>
-                        </form>
+                      
                          @endforeach
                     </div>
                  </div>

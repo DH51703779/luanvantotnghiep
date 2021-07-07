@@ -32,6 +32,7 @@ span.fa.fa-times-circle {
           <tr>
             <th>Mã</th>
             <th>Tên</th>
+            <th>Giá</th>
             <th>Hình</th>
             <th>Trạng Thái</th>
             <th style="width:30px;"></th>
@@ -42,6 +43,7 @@ span.fa.fa-times-circle {
           <tr>
             <td>{{$value->MaKhoa}}</td>
             <td>{{$value->TenKhoa}}</td>
+             <td>{{$value->gia}}</td>
             <td> <img src="public/frontend/img/khoa/{{$value->Hinh}}" height="100" width="100"></td>
                 <td><span class="text-ellipsis">
                         <?php 
@@ -58,7 +60,7 @@ span.fa.fa-times-circle {
               </span></td>
             <td>
               <a href="{{URL::to('/edit-Khoa/'.$value->MaKhoa)}}" class="active" ui-toggle-class="" style="font-size: 15px;">
-                  <i class="fa fa-pencil-square-o text-success text-active"></i></a>
+                  <i class="fa fa-edit"></i></a>
             </td>
           </tr>
           @endforeach

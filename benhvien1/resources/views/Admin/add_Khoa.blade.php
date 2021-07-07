@@ -9,7 +9,7 @@
 </style>
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Thêm Khoa</h5>
+                                <h5 style="text-align: center; font-size: 25px;" class="card-title">Thêm Khoa</h5>
                                 <?php 
                                     $message = Session::get('message');
                                     if($message){
@@ -19,19 +19,13 @@
                                  ?>
                                 <form role="form" action="{{URL::to('/save-Khoa')}}" method="post" enctype="multipart/form-data">
                                     {{csrf_field()}}
-                                <div class="form-group row">
-                                        <label for="fname" class="col-md-3 m-t-15">Mã Khoa</label>
-                                        <div class="col-sm-9">
-                                            <input required name="MaKhoa" type="text" class="form-control" id="fname" placeholder="Nhập Mã Khoa">
-                                        </div>
-                                    </div>
                                     <div class="form-group row">
                                         <label for="lname" class="col-md-3 m-t-15">Tên Khoa</label>
                                         <div class="col-sm-9">
                                             <input required name="TenKhoa" type="text" class="form-control" id="lname" placeholder="Nhập Tên Khoa">
                                         </div>
                                     </div>
-                                        <div class="form-group row">
+                                     <div class="form-group row">
                                         <label for="lname" class="col-md-3 m-t-15">Giá</label>
                                         <div class="col-sm-9">
                                             <input required name="gia" type="text" class="form-control" id="lname" placeholder="Nhập Giá">
@@ -52,7 +46,6 @@
                                         <div class="col-sm-9">
                                             <input readonly value="1" name="TrangThaiKhoa" type="text" class="form-control" id="lname" placeholder="Nhập Tên Khoa">
                                         </div>
-                                
                             <div class="border-top">
                                 <div class="card-body">
                                     <button  type="Submit" class="btn btn-secondary">Thêm</button>

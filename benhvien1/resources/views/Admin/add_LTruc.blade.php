@@ -20,12 +20,13 @@
                                 <form role="form" action="{{URL::to('/save-LTruc')}}" method="post">
                                     {{csrf_field()}}
                                 <div class="form-group row">
-                                        <label for="fname" class="col-md-3 m-t-15">Tên Bác Sĩ</label>
+                                        <label for="fname" class="col-md-3 m-t-15">Tên Bác Sĩ -- Khoa</label>
                                         <div class="col-sm-9">
                                             <select name="MaBS" class="select2 form-control custom-select" style="width: 100%; height:36px;">
                                               @foreach ($ds_bacsi as $key => $value)
-                                                <option value="{{$value->MaBS}}" >{{$value->TenBS}}</option>
-                                               
+                                             
+                                                <option value="{{$value->MaBS}}" >{{$value->TenBS}} -- {{$value->TenKhoa}} </option>
+                            
                                              @endforeach
                                             </select>
                                         </div>
@@ -51,7 +52,7 @@
                                     </div>
                             <div class="border-top">
                                 <div class="card-body">
-                                    <button  type="Submit" class="btn btn-primary">Submit</button>
+                                    <button  type="Submit" class="btn btn-primary">Thêm</button>
                                 </div>
                             </div>
                         </form>

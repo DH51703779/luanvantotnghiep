@@ -6,18 +6,18 @@
     margin-top: 20px;
     font-size: 15px;
 }
-span.fa.fa-thumbs-up {
+span.fa.fa-check-circle {
     font-size: 28px;
     color: green;
 }
-span.fa.fa-thumbs-down {
+span.fa.fa-times-circle {
     font-size: 28px;
     color: red;
 }
 </style>
   <div class="panel panel-default">
     <div class="panel-heading">
-      Quản Lý Lịch Trực
+      Quản Lý Tài Khoản
     </div>
     <div class="panel">
       <?php 
@@ -34,34 +34,25 @@ span.fa.fa-thumbs-down {
       <table class="table table-striped b-t b-light" class="table table-striped table-bordered" id="myTable">
         <thead>
           <tr>
-            <th>Tên BS</th>
-             <th>Khoa</th>
-            <th>Buổi Trực</th>
-            <th>Ngày Trực</th>
+            <th>Tên Tài Khoản</th>
+            <th>Số Điện Thoại</th>
+            <th>Mật Khẩu</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
           
         <tbody>
-           @foreach ($ds_LTruc as $key => $value)
+           @foreach ($ds_TaiKhoan as $key => $value)
           <tr>
-            <td> <a>{{$value->TenBS}}</a></td>
-            <td> <a>{{$value->TenKhoa}}</a></td>
-            <td><span class="text-ellipsis">
-              <?php 
-                  if($value->Buoi==0){
-                    echo'Sáng';
-                  } else
-                    echo "Chiều";
-               ?>
-              
-            </span></td>
-              <td> <a>{{$value->NgayTruc}}</a></td>
+            <td> <a>{{$value->Ten}}</a></td>
+            <td><span class="text-ellipsis">{{$value->Sodienthoai}}</span></td>
+            <td><span class="text-ellipsis">{{$value->MatKhau}}</span></td>
+                
             <td>
-              <a href="{{URL::to('/edit-LTruc/'.$value->MaLT)}}" class="active" ui-toggle-class="" style="font-size: 15px;">
+              <a href="{{URL::to('/edit-TaiKhoan/'.$value->MaTK)}}" class="active" ui-toggle-class="" style="font-size: 15px;">
                   <i class="fa fa-edit"></i></a>
-                  <a onclick="return confirm('Bạn Có Chắc Là Muốn Xóa Lịch Trực Này Không?')" href="{{URL::to('/delete-LTruc/'.$value->MaLT)}}" class="active" ui-toggle-class="">
-                  <i class="fa fa-times text-danger text"></i></a>
+              <a onclick="return confirm('Bạn Có Chắc Là Muốn Xóa Tài Khoản Này Không?')" href="{{URL::to('/delete-TaiKhoan/'.$value->MaTK)}}" class="active" ui-toggle-class="">
+              <i class="fa fa-times text-danger text"></i></a>
             </td>
           </tr>
            @endforeach

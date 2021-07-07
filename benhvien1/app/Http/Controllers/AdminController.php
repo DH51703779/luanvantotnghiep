@@ -27,19 +27,19 @@ class AdminController extends Controller
         }elseif($mabacsi){
             return Redirect::to('/trangbacsi');
         }else{
-    	return view('admin_login');
+        return view('admin_login');
         }
     }
     public function admin_layout(){
         $this->Authlogin();
-    	return view('admin.dashboard');
+        return view('admin.dashboard');
     }
     public function dashboard(Request $request){
-    	$Ten = $request->Ten;
-    	$MatKhau = $request->MatKhau;
-    	$result = DB::table('taikhoan')->where('ten',$Ten)->where('MatKhau',$MatKhau)->first();
+        $Ten = $request->Ten;
+        $MatKhau = $request->MatKhau;
+        $result = DB::table('taikhoan')->where('ten',$Ten)->where('MatKhau',$MatKhau)->first();
      
-    	if($result){
+        if($result){
             $vaitro =$result->VaiTro; 
 
             if($vaitro==1){

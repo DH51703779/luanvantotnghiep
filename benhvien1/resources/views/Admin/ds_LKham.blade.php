@@ -17,7 +17,7 @@ span.fa.fa-thumbs-down {
 </style>
   <div class="panel panel-default">
     <div class="panel-heading">
-      Quản Lý Lịch Trực
+      Quản Lý Lịch Khám
     </div>
     <div class="panel">
       <?php 
@@ -34,34 +34,25 @@ span.fa.fa-thumbs-down {
       <table class="table table-striped b-t b-light" class="table table-striped table-bordered" id="myTable">
         <thead>
           <tr>
-            <th>Tên BS</th>
-             <th>Khoa</th>
-            <th>Buổi Trực</th>
-            <th>Ngày Trực</th>
-            <th style="width:30px;"></th>
+            <th>Tên BN</th>
+            <th >Số Thứ Tự</th>
+            <th >Tổng Tiền</th>
+            <th>Tình Trạng</th>
           </tr>
         </thead>
           
         <tbody>
-           @foreach ($ds_LTruc as $key => $value)
+           @foreach ($ds_LKham as $key => $value)
           <tr>
-            <td> <a>{{$value->TenBS}}</a></td>
-            <td> <a>{{$value->TenKhoa}}</a></td>
-            <td><span class="text-ellipsis">
-              <?php 
-                  if($value->Buoi==0){
-                    echo'Sáng';
-                  } else
-                    echo "Chiều";
-               ?>
-              
-            </span></td>
-              <td> <a>{{$value->NgayTruc}}</a></td>
-            <td>
-              <a href="{{URL::to('/edit-LTruc/'.$value->MaLT)}}" class="active" ui-toggle-class="" style="font-size: 15px;">
-                  <i class="fa fa-edit"></i></a>
-                  <a onclick="return confirm('Bạn Có Chắc Là Muốn Xóa Lịch Trực Này Không?')" href="{{URL::to('/delete-LTruc/'.$value->MaLT)}}" class="active" ui-toggle-class="">
-                  <i class="fa fa-times text-danger text"></i></a>
+            <td> <a style="color: #999;" href="{{URL::to('/chitietlichkham/'.$value->MaLK)}}">{{$value->TenBN}}</a></td>
+             <td>
+              <a>{{$value->STT}}</a>
+            </td>
+             <td>
+              <a>{{$value->TongTien}}</a>
+            </td>
+              <td>
+              <a>{{$value->Tinhtrang}}</a>
             </td>
           </tr>
            @endforeach

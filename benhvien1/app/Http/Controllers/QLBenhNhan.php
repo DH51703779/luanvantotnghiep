@@ -25,4 +25,11 @@ class QLBenhNhan extends Controller
      	$manager_dsbenhnhan = view('admin.ds_BenhNhan')->with('ds_BenhNhan',$ds_BenhNhan);
     	return view('/admin_layout')->with('admin.ds_BenhNhan',$manager_dsbenhnhan);
     }
+     public function chitietbn($Ma_benhnhan){
+        $chitietbenhnhan = DB::table('benhnhan')->where('MaBN',$Ma_benhnhan)->
+        orderby('benhnhan.MaBN','desc')->get();
+        $manager_ctbenhnhan = view('admin.chitietbenhnhan')->with('chitietbenhnhan',$chitietbenhnhan);
+
+        return view('/admin_layout')->with('admin.chitietbenhnhan',$manager_ctbenhnhan);
+    }
 }

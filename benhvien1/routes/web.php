@@ -106,8 +106,7 @@ Route::post('/admin-dashboard','AdminController@dashboard');
 
 //QLbacsi
 Route::get('/add-bacsi', 'QLBacSi@add_bacsi');
-Route::get('/theobacsi', 'QLBacSi@layout_theobacsi');
-Route::get('/ds-bacsi/{MaKhoa}', 'QLBacSi@ds_bacsi');
+Route::get('/ds-bacsi', 'QLBacSi@ds_bacsi');
 
 Route::get('/unactive-bacsi/{Ma_bacsi}', 'QLBacSi@unactive_bacsi');
 Route::get('/active-bacsi/{Ma_bacsi}', 'QLBacSi@active_bacsi');
@@ -118,7 +117,8 @@ Route::get('/delete-bacsi/{Ma_bacsi}', 'QLBacSi@delete_bacsi');
 //Suabacsi
 Route::get('/edit-bacsi/{Ma_bacsi}', 'QLBacSi@edit_bacsi');
 Route::post('/update-bacsi/{Ma_bacsi}', 'QLBacSi@update_bacsi');
-
+//chitietbacsi
+Route::get('/chitietbacsi/{Ma_bacsi}', 'QLBacSi@chitietbs');
 
 //QLKhoa
 Route::get('/add-Khoa', 'QLKhoa@add_Khoa');
@@ -137,7 +137,7 @@ Route::post('/update-Khoa/{Ma_Khoa}', 'QLKhoa@update_Khoa');
 
 //QLBenhNhan
 Route::get('/ds-BenhNhan', 'QLBenhNhan@ds_BenhNhan');
-
+Route::get('/chitietbenhnhan/{Ma_benhnhan}', 'QLBenhNhan@chitietbn');
 //QLPhong
 Route::get('/add-Phong', 'QLPhong@add_Phong');
 Route::post('/save-Phong', 'QLPhong@save_Phong');
@@ -158,3 +158,18 @@ Route::get('/ds-LTruc', 'QLLichTruc@ds_LTruc');
 Route::get('/edit-LTruc/{Ma_LTruc}', 'QLLichTruc@edit_LTruc');
 Route::post('/update-LTruc/{Ma_LTruc}', 'QLLichTruc@update_LTruc');
 Route::get('/delete-LTruc/{Ma_LTruc}', 'QLLichTruc@delete_LTruc');
+
+
+//lịch khám
+Route::get('/ds-LKham', 'QLLichTruc@ds_Lkham');
+Route::get('/chitietlichkham/{Ma_LKham}', 'QLLichTruc@chitietLK');
+
+
+//tài khoản
+Route::get('/ds-TaiKhoan', 'QLLichTruc@ds_TaiKhoan');
+Route::get('/edit-TaiKhoan/{Ma_TaiKhoan}', 'QLLichTruc@edit_TaiKhoan');
+Route::post('/update-TaiKhoan/{Ma_TaiKhoan}', 'QLLichTruc@update_TaiKhoan');
+Route::get('/delete-TaiKhoan/{Ma_TaiKhoan}', 'QLLichTruc@delete_TaiKhoan');
+
+Route::get('/add-TaiKhoan', 'QLLichTruc@add_TaiKhoan');
+Route::post('/save-TaiKhoan', 'QLLichTruc@save_TaiKhoan');

@@ -22,7 +22,7 @@
     <link href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="{{asset('public/backend/css/font.css')}}" type="text/css"/>
-    <link href="{{asset('public/backend/css/font-awesome.css')}}" rel="stylesheet"> 
+ 
     <link rel="stylesheet" href="{{asset('public/backend/css/morris.css')}}" type="text/css"/>
 
     <link rel="stylesheet" href="{{asset('public/backend/css/monthly.css')}}">
@@ -152,7 +152,7 @@
 
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="{{URL::to('/add-bacsi')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Thêm Bác Sĩ</span></a></li>
-                                <li class="sidebar-item"><a href="{{URL::to('/theobacsi')}}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Danh Sách Bác Sĩ </span></a></li>
+                                <li class="sidebar-item"><a href="{{URL::to('/ds-bacsi')}}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Danh Sách Bác Sĩ </span></a></li>
                             </ul>
                         </li> 
                          <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-multiple-outline"></i><span class="hide-menu">Quản Lý Bệnh Nhân </span></a>
@@ -176,6 +176,17 @@
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="{{URL::to('/add-LTruc')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Thêm Lịch Trực</span></a></li>
                                 <li class="sidebar-item"><a href="{{URL::to('/ds-LTruc')}}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Danh Sách Lịch Trực </span></a></li>
+                            </ul>
+                        </li> 
+                          <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-calendar-multiple"></i><span class="hide-menu">Quản Lý Lịch Khám </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item"><a href="{{URL::to('/ds-LKham')}}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Danh Sách Lịch Khám </span></a></li>
+                            </ul>
+                        </li> 
+                             <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-account-alert"></i><span class="hide-menu">Quản Lý Tài Khoản </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level">
+                                <li class="sidebar-item"><a href="{{URL::to('/add-TaiKhoan')}}" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Tạo Tài Khoản Bác Sĩ</span></a></li>
+                                <li class="sidebar-item"><a href="{{URL::to('/ds-TaiKhoan')}}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Danh Sách Tài Khoản</span></a></li>
                             </ul>
                         </li> 
                     </ul>

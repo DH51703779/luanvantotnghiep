@@ -10,10 +10,9 @@
       <table class="table table-striped b-t b-light" class="table table-striped table-bordered" id="myTable">
         <thead>
           <tr>
-            <th>Tên BS</th>
+            <th>Tên Bệnh Nhân</th>
             <th>Số Điện Thoại</th>
             <th>Giới Tính</th>
-            <th>Email</th> 
             <th>Địa Chỉ</th>
           </tr>
         </thead>
@@ -21,7 +20,7 @@
         <tbody>
            @foreach ($ds_BenhNhan as $key => $value)
           <tr>
-            <td> <a style="color: #999;" href="#">{{$value->TenBN}}</a></td>
+            <td> <a style="color: #999;" href="{{URL::to('/chitietbenhnhan/'.$value->MaBN)}}">{{$value->TenBN}}</a></td>
             <td><span class="text-ellipsis">{{$value->DienThoai}}</span></td>
             <td><span class="text-ellipsis">
               <?php 
@@ -31,7 +30,6 @@
                     echo "Nam";
                ?>
             </span></td>
-            <td><span class="text-ellipsis">{{$value->Email}}</span></td>
             <td><span class="text-ellipsis">{{$value->DiaChi}}</span></td>
           </tr>
            @endforeach

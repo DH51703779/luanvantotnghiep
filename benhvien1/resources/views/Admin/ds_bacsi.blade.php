@@ -14,6 +14,7 @@ span.fa.fa-calendar-times {
     font-size: 28px;
     color: red;
 }
+
 </style>
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -35,6 +36,7 @@ span.fa.fa-calendar-times {
         <thead>
           <tr>
             <th>Tên BS</th>
+             <th>Khoa</th>
             <th>Học Vị</th>
             <th>Giới Tính</th>
             <th>Trạng Thái</th>
@@ -45,7 +47,8 @@ span.fa.fa-calendar-times {
         <tbody>
            @foreach ($ds_bacsi as $key => $value)
           <tr>
-            <td> <a style="color: #999;" href="#">{{$value->TenBS}}</a></td>
+            <td> <a style="color: #999;" href="{{URL::to('/chitietbacsi/'.$value->MaBS)}}">{{$value->TenBS}}</a></td>
+            <td>{{$value->TenKhoa}}</td>
             <td><span class="text-ellipsis">{{$value->HocVi}}</span></td>
             <td><span class="text-ellipsis">
               <?php 
@@ -71,7 +74,7 @@ span.fa.fa-calendar-times {
               </span></td>
             <td>
               <a href="{{URL::to('/edit-bacsi/'.$value->MaBS)}}" class="active" ui-toggle-class="" style="font-size: 15px;">
-                  <i class="fa fa-pencil-square-o text-success text-active"></i></a>
+                  <i class="fa fa-edit"></i></a>
             </td>
           </tr>
            @endforeach
@@ -79,14 +82,7 @@ span.fa.fa-calendar-times {
       </table>
      
     </div>
-    <footer class="panel-footer">
-      <div class="row">
-        
-        <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
-        </div>
-      </div>
-    </footer>
+  
   </div>
 
 @endsection
