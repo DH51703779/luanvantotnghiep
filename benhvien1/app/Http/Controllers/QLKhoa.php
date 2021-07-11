@@ -97,16 +97,16 @@ class QLKhoa extends Controller
   		// Session::put('message',"Xóa Thành Công!!!");
     // 	return Redirect::to('/ds-Khoa');
     // }
-     public function unactive_khoa($Ma_Khoa){
-        DB::table('khoa')->where('MaKhoa',$Ma_Khoa)->update(['TrangThaiKhoa'=>1]);
-        Session::put('message',"Kích Hoạt Khoa Thành Công!!!");
-        return Redirect::to('/ds-Khoa');
+    //  public function unactive_khoa($Ma_Khoa){
+    //     DB::table('khoa')->where('MaKhoa',$Ma_Khoa)->update(['TrangThaiKhoa'=>1]);
+    //     Session::put('message',"Kích Hoạt Khoa Thành Công!!!");
+    //     return Redirect::to('/ds-Khoa');
 
-    }
-     public function active_khoa($Ma_Khoa){
-         DB::table('khoa')->where('MaKhoa',$Ma_Khoa)->update(['TrangThaiKhoa'=>0]);
-        Session::put('message',"Khoa Tạm Ngưng Hoạt Động !!!");
-        return Redirect::to('/ds-Khoa');
-    }
+    // }
+    //  public function active_khoa($Ma_Khoa){
+    //      DB::table('khoa')->where('MaKhoa',$Ma_Khoa)->update(['TrangThaiKhoa'=>0]);
+    //     Session::put('message',"Khoa Tạm Ngưng Hoạt Động !!!");
+    //     return Redirect::to('/ds-Khoa');
+    // }
 
 }

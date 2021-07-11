@@ -189,12 +189,15 @@
                                 <li class="sidebar-item"><a href="{{URL::to('/ds-TaiKhoan')}}" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Danh Sách Tài Khoản</span></a></li>
                             </ul>
                         </li> 
+                        
                     </ul>
                 </nav>   
+              
                 <!-- End Sidebar navigation -->
             </div>
             <!-- End Sidebar scroll-->
         </aside>
+        
         <!-- ============================================================== -->
         <!-- End Left Sidebar - style you can find in sidebar.scss  -->
         <!-- ============================================================== -->

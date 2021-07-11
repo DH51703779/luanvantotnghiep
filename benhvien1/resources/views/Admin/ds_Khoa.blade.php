@@ -34,7 +34,7 @@ span.fa.fa-times-circle {
             <th>Tên</th>
             <th>Giá</th>
             <th>Hình</th>
-            <th>Trạng Thái</th>
+            <!-- <th>Trạng Thái</th> -->
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -45,19 +45,7 @@ span.fa.fa-times-circle {
             <td>{{$value->TenKhoa}}</td>
              <td>{{$value->gia}}</td>
             <td> <img src="public/frontend/img/khoa/{{$value->Hinh}}" height="100" width="100"></td>
-                <td><span class="text-ellipsis">
-                        <?php 
-                            if($value->TrangThaiKhoa==0){
-                              ?>
-                              <a href="{{URL::to('/unactive-khoa/'.$value->MaKhoa)}}" ><span class="fa fa-times-circle"></span></a>
-                            <?php  
-                            } else{
-                            ?>
-                           <a href="{{URL::to('/active-khoa/'.$value->MaKhoa)}}" ><span class="fa fa-check-circle"></span></a>
-                           <?php 
-                           }
-                         ?>
-              </span></td>
+              
             <td>
               <a href="{{URL::to('/edit-Khoa/'.$value->MaKhoa)}}" class="active" ui-toggle-class="" style="font-size: 15px;">
                   <i class="fa fa-edit"></i></a>

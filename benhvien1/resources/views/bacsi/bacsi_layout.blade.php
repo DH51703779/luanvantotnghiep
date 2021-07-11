@@ -189,6 +189,9 @@
                                 console.log(a);
                                 if(a==null){
                                     a=data;
+                                    if(a==1){
+                                    document.getElementById('audi').play();
+                                    }
                                 }
                                 if(a != data){
                                 a=data;

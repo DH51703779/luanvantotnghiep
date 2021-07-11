@@ -36,7 +36,7 @@ span.fa.fa-times-circle {
           <tr>
             <th>Tên Phòng</th>
             <th>Tên Khoa</th>
-            <th>Trạng Thái</th>
+      
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -46,19 +46,7 @@ span.fa.fa-times-circle {
           <tr>
             <td> <a style="color: #999;" href="#">{{$value->MaPhong}}</a></td>
             <td><span class="text-ellipsis">{{$value->TenKhoa}}</span></td>
-                 <td><span class="text-ellipsis">
-                        <?php 
-                            if($value->TrangThaiPhong==0){
-                              ?>
-                              <a href="{{URL::to('/unactive-Phong/'.$value->MaPhong)}}" ><span class="fa fa-times-circle"></span></a>
-                            <?php  
-                            } else{
-                            ?>
-                           <a href="{{URL::to('/active-Phong/'.$value->MaPhong)}}" ><span class="fa fa-check-circle"></span></a>
-                           <?php 
-                           }
-                         ?>
-              </span></td>
+                 
             <td>
               <a href="{{URL::to('/edit-Phong/'.$value->MaPhong)}}" class="active" ui-toggle-class="" style="font-size: 15px;">
                   <i class="fa fa-edit"></i></a>

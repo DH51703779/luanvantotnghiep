@@ -85,7 +85,7 @@ class homecontroller extends Controller
             Session::put('khoa', $key->TenKhoa);
             Session::put('makhoa', $key->MaKhoa);
             
-            $dsbacsi = DB::table('bacsi')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')->where('bacsi.MaKhoa', $Makhoa)->get();
+            $dsbacsi = DB::table('bacsi')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')->where('bacsi.MaKhoa', $Makhoa)->where('TrangThaiBS',"1")->get();
             return view('benhnhan.dsbacsi')->with('dsbacsi', $dsbacsi);
         } else if ($key == 1) {
             $khoa = DB::table('khoa')->where('Makhoa', $Makhoa)->get();
@@ -111,38 +111,40 @@ class homecontroller extends Controller
                         ->where('bacsi.MaKhoa', $Makhoa)
                         ->where('TenBS', 'like', '%' . $hoten . '%')
                         ->where('gioitinh', 'like', '%' . $gioitinh . '%')
-                        ->where('HocVi', 'like', '%' . $hocvi . '%')->get();
+                        ->where('HocVi', 'like', '%' . $hocvi . '%')
+                        ->where('TrangThaiBS',"1")->get();
                 } else {
                     $result = DB::table('bacsi')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
                         ->where('bacsi.MaKhoa', $Makhoa)
                         ->where('TenBS', 'like', '%' . $hoten . '%')
-                        ->where('gioitinh', 'like', '%' . $gioitinh . '%')->get();
+                        ->where('gioitinh', 'like', '%' . $gioitinh . '%')
+                        ->where('TrangThaiBS',"1")->where('TrangThaiBS',"1")->get();
                 }
             } else if ($hocvi) {
                 $result = DB::table('bacsi')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
                     ->where('bacsi.MaKhoa', $Makhoa)
                     ->where('TenBS', 'like', '%' . $hoten . '%')
-                    ->where('HocVi', 'like', '%' . $hocvi . '%')->get();
+                    ->where('HocVi', 'like', '%' . $hocvi . '%')->where('TrangThaiBS',"1")->get();
             } else {
                 $result = DB::table('bacsi')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
                     ->where('bacsi.MaKhoa', $Makhoa)
-                    ->where('TenBS', 'like', '%' . $hoten . '%')->get();
+                    ->where('TenBS', 'like', '%' . $hoten . '%')->where('TrangThaiBS',"1")->get();
             }
         } else if ($gioitinh >= 0) {
             if ($hocvi) {
                 $result = DB::table('bacsi')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
                     ->where('bacsi.MaKhoa', $Makhoa)
                     ->where('gioitinh', 'like', '%' . $gioitinh . '%')
-                    ->where('HocVi', 'like', '%' . $hocvi . '%')->get();
+                    ->where('HocVi', 'like', '%' . $hocvi . '%')->where('TrangThaiBS',"1")->get();
             } else {
                 $result = DB::table('bacsi')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
                     ->where('bacsi.MaKhoa', $Makhoa)
-                    ->where('gioitinh', 'like', '%' . $gioitinh . '%')->get();
+                    ->where('gioitinh', 'like', '%' . $gioitinh . '%')->where('TrangThaiBS',"1")->get();
             }
         } else {
             $result = DB::table('bacsi')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
                 ->where('bacsi.MaKhoa', $Makhoa)
-                ->where('HocVi', 'like', '%' . $hocvi . '%')->get();
+                ->where('HocVi', 'like', '%' . $hocvi . '%')->where('TrangThaiBS',"1")->get();
         }
 
         return view('benhnhan.dsbacsi')->with('dsbacsi', $result);
