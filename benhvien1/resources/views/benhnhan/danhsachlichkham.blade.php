@@ -8,17 +8,18 @@
 
 
 
-
+    <?php   $x = Session::get('trunglich');
+      $y = isset($x)?$x:null;
+      if($y != null){
+    ?>
     <script type="text/javascript">
-      
-
-        function lichkham() {
-            const x = document.querySelector('#form')
-            x.innerHTML = `     `;
-
-        };
+        $(document).ready(function() {
+            alert("<?php echo $y ; ?>");
+        });
     </script>
-
+    <?php } 
+     Session::put('trunglich',"" );
+    ?>
 
 </head>
 

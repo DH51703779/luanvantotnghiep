@@ -125,4 +125,8 @@ class QLBacSi extends Controller
         Session::put('message',"Bác Sĩ Tạm Nghỉ !!!");
         return Redirect::to('/ds-bacsi');
     }
+     public function getphong($map){
+        $phong = DB::table('phong')->where("MaKhoa",$map)->get();
+        echo $phong;
+    }
 }

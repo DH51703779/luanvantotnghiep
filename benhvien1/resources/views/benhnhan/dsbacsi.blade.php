@@ -100,7 +100,7 @@
                 <tbody>
                     @foreach($dsbacsi as $key=>$value)
                     <tr>
-                        <td> <img height="200" src="{{asset('./public/frontend/img/gallery/'.$value->hinh)}}" alt="">
+                        <td> <img height="200" src="{{asset('./public/backend/img/'.$value->hinh)}}" alt="">
                         </td>
                         <td data-label="Tên :" width="40%">{{($value->TenBS)}}</td>
                         <td data-label="Học vị :"> {{($value->HocVi)}}</td>
@@ -110,8 +110,8 @@
                                 } else {
                                     echo "Nam";
                                 } ?></td>
-                        <td><input type="button" class="btn" data-id="{{($value->MaBS)}}" value="Lịch khám" /> </td>
-                        
+                        <!-- <td><input type="button" class="btn" data-id="{{($value->MaBS)}}" value="Lịch khám" /> </td> -->
+                       <td> <a class="btn" href="{{URL::to('/dienthongtin/chongio/'.$value->MaBS)}}" >Chọn lịch </a></td>
                     </tr>
                     <tr id="{{($value->MaBS)}}">
 
@@ -169,12 +169,21 @@
                                     }
                                     var x = resultajax + `</td> `
                                     $('#' + id).html(x);
+                                },
+                                error: function(data){
+                                    var x = `  <td colspan="6"   ><a class="btnxx" > Không có ca trực </a> <br> `;
+                                    $('#' + id).show();
+                                    $('#' + id).html(x);
                                 }
 
                             })
                         }
                     })
                 });
+                function time1(){
+                    const y = document.querySelector('#')
+                }
+
                 </script>
 
             </table>

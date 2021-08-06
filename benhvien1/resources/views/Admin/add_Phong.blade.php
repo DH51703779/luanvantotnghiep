@@ -35,12 +35,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                  <div class="form-group row">
-                                        <label for="fname" class="col-md-3 m-t-15">Trạng Thái</label>
-                                        <div class="col-sm-9">
-                                            <input readonly value="1" required name="TrangThaiPhong" type="text" class="form-control" id="fname" placeholder="Nhập Tên">
-                                        </div>
-                                    </div> 
+                                 
                             <div class="border-top">
                                 <div class="card-body">
                                     <button  type="Submit" class="btn btn-primary">Thêm</button>

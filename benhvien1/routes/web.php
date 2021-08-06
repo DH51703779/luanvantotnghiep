@@ -36,6 +36,7 @@ Route::get('/trangbacsi/timkiem/{key}','chatController@timkiem');
 
 
 
+
 //login
 Route::get('/dangnhap','homecontroller@dangnhap');
 route::post('/login','loginController@dangnhap');
@@ -47,6 +48,7 @@ route::post('/layma','loginController@layma');
 route::post('/xacthuc','loginController@xacthuc');
 route::post('/cap-nhat-mat-khau','loginController@capnhatmatkhau');
 route::get('/doimatkhau','loginController@doimatkhau');
+Route::get('/dienthongtin/chongio/{MaBS}','homecontroller@chonca');
 
 // home 
 Route::get('/datlich', 'homecontroller@layout');
@@ -56,7 +58,7 @@ Route::get('/dskhoa/{key}', 'homecontroller@dskhoa');
 
 Route::post('/timkiem', 'homecontroller@timkiem');
 Route::get('/lichkham/{id}','homecontroller@lichkham' );
-Route::get('/dienthongtin/{MaLT}','homecontroller@diendangky');
+Route::get('/dienthongtin','homecontroller@diendangky');
 Route::get('dienthongtin/quan/{Maquan}','homecontroller@quan');
 Route::get('/theongay','homecontroller@homnay');
 Route::get('dsbacsi/ngaytruc/{ngay}','homecontroller@ngaytruc');
@@ -107,7 +109,7 @@ Route::post('/admin-dashboard','AdminController@dashboard');
 //QLbacsi
 Route::get('/add-bacsi', 'QLBacSi@add_bacsi');
 Route::get('/ds-bacsi', 'QLBacSi@ds_bacsi');
-
+Route::get('/getphong/{MaP}', 'QLBacSi@getphong');
 Route::get('/unactive-bacsi/{Ma_bacsi}', 'QLBacSi@unactive_bacsi');
 Route::get('/active-bacsi/{Ma_bacsi}', 'QLBacSi@active_bacsi');
 

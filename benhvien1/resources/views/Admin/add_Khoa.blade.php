@@ -36,15 +36,10 @@
                                             <div class="col-md-9">
                                                 <div class="custom-file">
                                                     <input name="Hinh" type="file" class="custom-file-input" id="validatedCustomFile" >
-                                                    <label  class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                                    <label  class="custom-file-label" for="validatedCustomFile">Chọn ảnh...</label>
                                                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                        <label for="lname" class="col-md-3 m-t-15">Trạng Thái</label>
-                                        <div class="col-sm-9">
-                                            <input readonly value="1" name="TrangThaiKhoa" type="text" class="form-control" id="lname" placeholder="Nhập Tên Khoa">
                                         </div>
                             <div class="border-top">
                                 <div class="card-body">

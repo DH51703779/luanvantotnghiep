@@ -24,8 +24,10 @@ class benhnhanController extends Controller
 
     public function diendangky(Request $re)
     {   $this->Alogin();
+    
         $id = Session::get('id-user');
         $MaLT = Session::get('MaLT');
+        $time = Session::get('time');
         Session::put('MaL', $MaLT);
         $result = DB::table('bacsi')->Join('lichtruc', 'bacsi.MaBS', '=', 'lichtruc.MaBS')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
             ->where('lichtruc.MaLT', $MaLT)->get();
@@ -139,6 +141,7 @@ class benhnhanController extends Controller
         $mail = Session::get('email-user');
         $MaBN = Session::get('MaBN');
         $MaLt = Session::get('MaL');
+        $time =Session::get('time');
         $data['MaBN'] = $MaBN;
         $count = DB::table('lichkham')->where('MaLT', $MaLt)->count();
         $data['STT'] = $count + 1;
@@ -159,6 +162,13 @@ class benhnhanController extends Controller
             $ngaykham= $key->NgayTruc;
             $bacsi = $key->TenBS;
         $data['MaBS'] = $key->MaBS;
+        $giokham = $ngaykham." ".$time ;
+        $data['giokham']=$giokham;
+        $test= DB::table('lichkham')->where('MaBN',$MaBN)->where('giokham',$giokham)->count();
+        if($test > 0){
+            Session::put('trunglich',"Bệnh nhân đã có lịch khám trùng thời gian , Vui lòng kiểm tra lại ! " );
+            return redirect('/trang-ca-nhan/lich-kham/');
+        }
         DB::table('lichkham')->insert($data);
 
         //gui mail 
@@ -173,6 +183,7 @@ class benhnhanController extends Controller
             $message->to($to_email)->subject('Phiếu khám bệnh ');
             $message->from($to_email,$to_name);
         });
+        Session::put('trunglich',"Đặt lịch thành công ! " );
         return redirect('/trang-ca-nhan/lich-kham/');
     }
     public function chitietbenhnhan($MaBN)

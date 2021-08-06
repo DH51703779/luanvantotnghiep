@@ -22,7 +22,7 @@ class QLLichTruc extends Controller
     public function add_LTruc(){
   		$this->Authlogin();
         $ds_bacsi=DB::table('bacsi')
-        ->join('khoa','khoa.MaKhoa','=','bacsi.MaKhoa')
+        ->join('khoa','khoa.MaKhoa','=','bacsi.MaKhoa')->where('TrangThaiBS',"1")
         ->orderby('MaBS','desc')->get();
 
     	return view('admin.add_LTruc')->with('ds_bacsi',$ds_bacsi);

@@ -146,9 +146,26 @@
 			          <br>
 			      <p class="card-text" style="font-size: 25px;">Số Thứ Tự Khám: {{$value->STT}}</p>
 			          <br>
-				<p class="card-text" style="font-size: 25px;">Tình Trạng: {{$value->Tinhtrang}}</p>
+				<p class="card-text" style="font-size: 25px;">Trạng Thái: 
+        				  <?php if ($value->Trangthai == 0) {
+                      echo '   <a style="color: red;">Chưa khám </a>';
+                    } else if ($value->Trangthai == 2) {
+                      echo '   <a style="color: blue;">Vắng</a>';
+                    } else if ($value->Trangthai == 1) {
+                      echo ' <a style="color: green;">Đã khám</a>';
+                    } ?>
+
+				</p>
 			          <br>
-			    
+			    <p class="card-text" style="font-size: 25px;">Thanh Toán: 
+			    <?php if ($value->Thanhtoan == 0) {
+                      echo '   <a style="color: red;">Chưa thanh toán </a>';
+                    } else {
+                      echo '   <a style="color: green;">Đã thanh toán</a>';
+                    } 
+                    ?>
+			    </p>
+			    <br>
 			          <form action="{{URL::to('/ds-LKham')}}" method="get">
 			          	 
 			          	<div class="card-body">

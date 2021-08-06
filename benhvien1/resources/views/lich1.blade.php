@@ -83,9 +83,11 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
         font-family: 'Noto Sans', sans-serif;
         margin-top: 80px;
     }
-    a{
+
+    a {
         color: black;
     }
+
     h3 {
         margin-bottom: 30px;
     }
@@ -192,105 +194,106 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
         font-weight: bold;
         text-align: center;
     }
-    @media only screen and (min-width: 320px) and (max-width: 860px){
 
-       
-    th {
-        height: 30px;
-        text-align: center;
+    @media only screen and (min-width: 320px) and (max-width: 860px) {
+
+
+        th {
+            height: 30px;
+            text-align: center;
+        }
+
+        td {
+            height: 50px;
+        }
+
+        .today {
+            background: orange;
+        }
+
+        th:nth-of-type(1),
+        td:nth-of-type(1) {
+            color: red;
+        }
+
+        th:nth-of-type(7),
+        td:nth-of-type(7) {
+            color: blue;
+        }
+
+        .btnday {
+            background-image: linear-gradient(to left, #fafafa, #559af3);
+            -moz-user-select: none;
+
+            letter-spacing: 1px;
+            line-height: 0;
+            margin-bottom: 0;
+            padding: 27px 44px;
+            border-radius: 5px;
+
+            margin: 10px;
+            cursor: pointer;
+            transition: color 0.4s linear;
+            position: relative;
+            z-index: 1;
+            border: 0;
+            overflow: hidden;
+            margin: 0;
+            font-size: small;
+            line-height: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .btnday::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 1;
+            border-radius: 5px;
+            transition: transform 0.5s;
+            transition-timing-function: ease;
+            transform-origin: 0 0;
+            transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+            transform: scaleX(0);
+            border-radius: 0;
+
+
+        }
+
+        .btnday:hover::before {
+            transform: scaleX(1);
+            color: #fff !important;
+            z-index: -1;
+        }
+
+        .btny {
+            background-color: antiquewhite;
+            -moz-user-select: none;
+            border-radius: 5px;
+            height: 5rem !important;
+            font-weight: bold;
+            text-align: center;
+            width: 5rem !important;
+            line-height: 20px !important;
+
+        }
+
+
+        .col-4 {
+            max-width: 100% !important;
+            flex: 100%;
+        }
+
+        .col-8 {
+            max-width: 100% !important;
+            flex: 100%;
+        }
     }
-
-    td {
-        height: 50px;
-    }
-
-    .today {
-        background: orange;
-    }
-
-    th:nth-of-type(1),
-    td:nth-of-type(1) {
-        color: red;
-    }
-
-    th:nth-of-type(7),
-    td:nth-of-type(7) {
-        color: blue;
-    }
-
-    .btnday {
-        background-image: linear-gradient(to left, #fafafa, #559af3);
-        -moz-user-select: none;
-       
-        letter-spacing: 1px;
-        line-height: 0;
-        margin-bottom: 0;
-        padding: 27px 44px;
-        border-radius: 5px;
-
-        margin: 10px;
-        cursor: pointer;
-        transition: color 0.4s linear;
-        position: relative;
-        z-index: 1;
-        border: 0;
-        overflow: hidden;
-        margin: 0;
-        font-size: small;
-        line-height: 40px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .btnday::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        z-index: 1;
-        border-radius: 5px;
-        transition: transform 0.5s;
-        transition-timing-function: ease;
-        transform-origin: 0 0;
-        transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
-        transform: scaleX(0);
-        border-radius: 0;
-
-
-    }
-
-    .btnday:hover::before {
-        transform: scaleX(1);
-        color: #fff !important;
-        z-index: -1;
-    }
-
-    .btny {
-        background-color: antiquewhite;
-        -moz-user-select: none;
-        border-radius: 5px;
-        height: 5rem !important;
-        font-weight: bold;
-        text-align: center;
-        width: 5rem !important;
-        line-height: 20px !important;
-       
-    }
-    
-
-    .col-4{
-     max-width: 100% !important;
-     flex: 100%;
-    }
-    .col-8{
-    max-width: 100% !important;
-    flex: 100%;
-    }
-    }
-
 </style>
 <link rel="stylesheet" href="{{asset('public/frontend/css/dsbacsi.css')}}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -309,11 +312,11 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
                     <div class="team-caption">
                         <h2 class="contact-title">Thông tin khám</h2>
                         <h3 class="far fa-address-card"> &nbsp; &nbsp; <?php echo $tenkhoa; ?></h3>
-                        
+
                     </div>
                     <hr>
-                  
-                  
+
+
                 </div>
             </div>
             <script type="text/javascript">
@@ -334,7 +337,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
                         <h2 class="contact-title">Thông tin khám</h2>
                         <h3 class="far fa-address-card"> &nbsp; &nbsp; <?php echo $tenkhoa; ?></h3>
                         &nbsp; 
-                        <h3 class="far fa-calendar-alt">&nbsp; `+id+` </h3>
+                        <h3 class="far fa-calendar-alt">&nbsp; ` + id + ` </h3>
 
                     </div>
                     <hr>`;
@@ -342,35 +345,95 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
                                 $('#bacsi').show();
                                 if (data.length > 0) {
                                     for (let i = 0; i < data.length; i++) {
-                                        resultajax += `  <div class="card mb-3" style="max-width: 540px;">
+                                        if (data[i].Buoi.toLowerCase() === "sáng") {
+                                            resultajax += `  <div class="card mb-3" style="max-width: 540px;">
                         <div class="row g-0">
                             <div class="col-md-4">
-                                <img height="100" width="100" src="{{asset('./public/frontend/img/gallery/`+data[i].hinh+`')}}" alt="...">
+                                <img height="100" width="100" src="{{asset('./public/backend/img/` + data[i].hinh + `')}}" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
-                                    <h5 class="card-title">`+data[i].HocVi+`</h5>
-                                    <p class="card-text">`+data[i].TenBS+`</p>
-                                    <p class="card-text"><small class="text-muted">`+data[i].MaPhong+`/`+data[i].Buoi+`</small></p>
-                                    <a  href="{{URL::to('/dienthongtin/`+data[i].MaLT+ `')}}" class="btn">chọn</a>
+                                    <h5 class="card-title">` + data[i].HocVi + `</h5>
+                                    <p class="card-text">` + data[i].TenBS + `</p>
+                                    <p class="card-text"> Phòng :` + data[i].MaPhong + ` &nbsp; &nbsp;/ &nbsp;   Buổi ` + data[i].Buoi + `</p>
+                                </div>
+                            </div>
+                                       
+                        </div>
+                        </div>
+                        <div class="row g-0">
+                         
+                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=07:00')}}"  class="col-3 box" >7:00 - 8:00</a>
+                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=08:00')}}"  class="col-3 box" >8:00 - 9:00</a>
+                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=09:00')}}"  class="col-3 box" >9:00 - 10:00</a>
+                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=10:00')}}"  class="col-3 box" >10:00 - 11:00</a> 
+                        </div>
+                        <hr>
+                        `
+
+                                        } else if ((data[i].Buoi.toLowerCase() === "chiều")) {
+                                            resultajax += `  <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img height="100" width="100" src="{{asset('./public/backend/img/` + data[i].hinh + `')}}" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">` + data[i].HocVi + `</h5>
+                                    <p class="card-text">` + data[i].TenBS + `</p>
+                                    <p class="card-text"> Phòng :` + data[i].MaPhong + ` &nbsp; &nbsp;/ &nbsp;   Buổi ` + data[i].Buoi + `</p>
+                                </div>
+                            </div>
+                                       
+                        </div>
+                        </div>
+                        <div class="row g-0">
+                         
+                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=13:30')}}"  class="col-4 box" >13:30 - 14:30</a>
+                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=14:30')}}"  class="col-4 box" >14:30 - 15:30</a>
+                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=15:30')}}"  class="col-4 box" >15:30 - 16:30</a>
+                            
+                        </div>
+                        <hr>
+                        `
+
+                                        }
+                                    }
+                                } else {
+                                    resultajax += `  <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">Không có ca trực</h5>
+                                
                                 </div>
                             </div>
                         </div>
                     </div>`
-                                    }
                                 }
+
                                 $('#bacsi').html(resultajax);
                             }
                         })
-                    })
+                    });
                 });
+
+                function time1() {
+                    alert("hello 1");
+
+                };
+
+                function time2() {
+                    alert("hello2")
+                };
             </script>
 
             <div class="col-8">
                 <div class="row"> &nbsp; &nbsp; &nbsp;
-                    <a class="btny" href="?ym=<?php echo $prev; ?>">&lt;</a>  &nbsp; &nbsp; &nbsp;
-                    <span class="btny"><?php echo $html_title; ?></span>  &nbsp; &nbsp; &nbsp;
-                     <a class="btny" href="?ym=<?php echo $next; ?>">&gt;</a>
+                    <a class="btny" href="?ym=<?php echo $prev; ?>">&lt;</a> &nbsp; &nbsp; &nbsp;
+                    <span class="btny"><?php echo $html_title; ?></span> &nbsp; &nbsp; &nbsp;
+                    <a class="btny" href="?ym=<?php echo $next; ?>">&gt;</a>
                     &nbsp;
                     <a class="btny" href="{{URL::to('/theongay')}}">Hôm nay</a>
                 </div>
@@ -396,4 +459,23 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
         </div>
     </div>
 </body>
+<style>
+    .box {
+        color: blue !important;
+        border: 1px solid #559af3;
+        border-radius: 5px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        line-height: 4rem;
+        width: auto;
+
+
+    }
+
+    .col-3 {
+        height: 5rem;
+    }
+</style>
 @endsection

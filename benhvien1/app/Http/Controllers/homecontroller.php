@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\bacsi;
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -26,6 +27,7 @@ class homecontroller extends Controller
         });
 
     }
+    
     public function Alogin(){
         $matk=Session::get('id-user');
             if($matk){
@@ -33,6 +35,18 @@ class homecontroller extends Controller
             }else{
               return  Redirect::to('/dangnhap')->send();
             }
+    }
+    public function chonca($MaBS){
+        $this->Alogin();
+        $today = date('Y-m-j', time());
+        
+        $lichkham = DB::table('lichtruc')->where('NgayTruc','>',$today)
+            ->where('MaBS', $MaBS) ->get();
+            $c = DB::table('lichtruc')->where('NgayTruc','>',$today)
+            ->where('MaBS', $MaBS) ->count();
+        $BS = DB::table('bacsi')->where('MaBS',$MaBS)->get();
+        
+        return View('benhnhan.chongio')->with('catruc',$lichkham)->with('bs',$BS)->with('count',$c);
     }
     public function quytrinh(){
         return view('quytrinh');
@@ -151,19 +165,21 @@ class homecontroller extends Controller
     }
   
     //Điền form đăng ký thông tin bệnh nhân 
-    public function diendangky($MaLT)
+    public function diendangky(Request $request)
     {
      
+        
         $ac = Session::get('id-user');
         if($ac){
-         
-        
+        $MaLT=$request->malt;
+        $time =$request->time;
+        Session::put('time',$time);
         Session::put('MaLT',$MaLT);
         $result = DB::table('bacsi')->Join('lichtruc', 'bacsi.MaBS', '=', 'lichtruc.MaBS')->Join('khoa', 'bacsi.MaKhoa', '=', 'khoa.MaKhoa')
             ->where('lichtruc.MaLT', $MaLT)->get();
         $benhnhan = DB::table('benhnhan')->where('MaTK',$ac)->get();
         $quan = DB::table('quan')->where('provinceid', "79TTT")->orderBy('namequan', 'desc')->get();
-        return view('benhnhan.dienthongtin')->with('quan', $quan)->with('bacsi', $result)->with('benhnhan',$benhnhan);
+        return view('benhnhan.dienthongtin')->with('quan', $quan)->with('bacsi', $result)->with('benhnhan',$benhnhan)->with('time',$request->time);
         }else{
             return redirect('/dangnhap');
         }

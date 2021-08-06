@@ -38,7 +38,6 @@ class QLKhoa extends Controller
     	$data = array();
     	$data['MaKhoa']=$request -> MaKhoa;
     	$data['TenKhoa']=$request -> TenKhoa;
-      $data['TrangThaiKhoa']=$request -> TrangThaiKhoa;
       $data['gia']=$request -> gia;
   		$get_image = $request ->file('Hinh');
   		if($get_image){

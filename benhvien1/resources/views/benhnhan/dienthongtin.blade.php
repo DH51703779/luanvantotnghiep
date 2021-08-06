@@ -199,7 +199,9 @@ $ten = Session::get('ten');
                     <div class="col-sm-8">
                         <div class="form-group">
 
-                            (Ngày sinh) <input class="form-control valid" name="ngaysinh" type="date" placeholder="Ngày sinh">
+                            (Ngày sinh) <input class="form-control valid" name="ngaysinh" type="date" placeholder="Ngày sinh" 
+                            max="<?php $day = date('Y-m-d', strtotime(' - 365 days'));
+                                            echo $day; ?>">
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -328,7 +330,7 @@ $ten = Session::get('ten');
                     <h2 class="contact-title">Thông tin Bác sĩ</h2>
 
                     <div class="team-img">
-                        <img height="300" src="{{asset('./public/frontend/img/gallery/'.$value->hinh)}}" alt="">
+                        <img height="300" src="{{asset('./public/backend/img/'.$value->hinh)}}"  alt="">
                     </div>
                     <div class="team-caption">
 
@@ -340,7 +342,7 @@ $ten = Session::get('ten');
                                             } else {
                                                 echo "Nam";
                                             } ?></h5>
-                        <h5>Buổi :{{($value->Buoi)}}</h5>
+                        <h5>Buổi :{{($value->Buoi)}} {{($time)}}</h5>
                         <h5>Ngày :{{($value->NgayTruc)}}</h5>
                         <h5>Phòng :{{($value->MaPhong)}}</h5>
                         <h4>Giá khám : <?php echo number_format(($value->gia));  ?> VNĐ</h4>

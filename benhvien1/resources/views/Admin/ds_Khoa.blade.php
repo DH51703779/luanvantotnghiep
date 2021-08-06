@@ -30,8 +30,7 @@ span.fa.fa-times-circle {
       <table class="table table-striped b-t b-light" class="data display datatable" id="myTable">
         <thead>
           <tr>
-            <th>Mã</th>
-            <th>Tên</th>
+            <th>Tên Khoa</th>
             <th>Giá</th>
             <th>Hình</th>
             <!-- <th>Trạng Thái</th> -->
@@ -41,7 +40,6 @@ span.fa.fa-times-circle {
         <tbody>
              @foreach ($ds_Khoa as $key => $value)
           <tr>
-            <td>{{$value->MaKhoa}}</td>
             <td>{{$value->TenKhoa}}</td>
              <td>{{$value->gia}}</td>
             <td> <img src="public/frontend/img/khoa/{{$value->Hinh}}" height="100" width="100"></td>

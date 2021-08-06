@@ -90,7 +90,7 @@
                                             <div class="col-md-9">
                                                 <div class="custom-file">
                                                     <input value="{{$edit_value->hinh}}" name="hinh" type="file" class="custom-file-input" id="validatedCustomFile" >
-                                                    <label  class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                                    <label  class="custom-file-label" for="validatedCustomFile">Chọn ảnh...</label>
                                                     <div class="invalid-feedback">Example invalid custom file feedback</div>
                                                 </div>
                                             </div>

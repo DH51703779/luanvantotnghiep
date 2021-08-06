@@ -29,7 +29,6 @@ class QLPhong extends Controller
     	$data = array();
     	$data['MaPhong']=$request -> MaPhong;
     	$data['MaKhoa']=$request -> Khoa;
-        $data['TrangThaiPhong']=$request -> TrangThaiPhong;
     	// echo'<pre>';
     	// print_r($data);
     	// echo'</pre>';

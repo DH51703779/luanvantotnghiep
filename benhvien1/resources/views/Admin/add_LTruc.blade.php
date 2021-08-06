@@ -35,11 +35,11 @@
                                     <label class="col-md-3">Buổi Trực</label>
                                     <div class="col-md-9">
                                         <div class="custom-control custom-radio">
-                                            <input name="Buoi" value="0" type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked" required>
+                                            <input name="Buoi" value="Sáng" type="radio" class="custom-control-input" id="customControlValidation1" name="radio-stacked" required>
                                             <label class="custom-control-label" for="customControlValidation1">Sáng</label>
                                         </div>
                                          <div class="custom-control custom-radio">
-                                            <input value="1" name="Buoi" type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+                                            <input value="Chiều" name="Buoi" type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
                                             <label class="custom-control-label" for="customControlValidation2">Chiều</label>
                                         </div>
                                     </div>
@@ -47,7 +47,8 @@
                                     <div class="form-group row">
                                         <label for="lname" class="col-md-3 m-t-15">Ngày Trực</label>
                                         <div class="col-sm-9">
-                                            <input required name="NgayTruc" type="date" class="form-control" id="lname">
+                                            <input required name="NgayTruc" type="date" class="form-control" id="lname" min="<?php $day = date('Y-m-d', strtotime(' + 1 days'));
+                                            echo $day; ?>"/>
                                         </div>
                                     </div>
                             <div class="border-top">
