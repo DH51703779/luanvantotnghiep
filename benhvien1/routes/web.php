@@ -177,3 +177,9 @@ Route::get('/delete-TaiKhoan/{Ma_TaiKhoan}', 'QLLichTruc@delete_TaiKhoan');
 
 Route::get('/add-TaiKhoan', 'QLLichTruc@add_TaiKhoan');
 Route::post('/save-TaiKhoan', 'QLLichTruc@save_TaiKhoan');
+
+//Order
+
+Route::get('/print-order/{malk}','OrderController@print_order');
+Route::get('/manage-order','OrderController@manage_order');
+Route::get('/view-order/{order_code}','OrderController@view_order');

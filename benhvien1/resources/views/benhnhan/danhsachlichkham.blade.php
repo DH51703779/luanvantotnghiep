@@ -8,49 +8,49 @@
     <link rel="stylesheet" href="{{asset('public/backend/DataTables/css/jquery.dataTables.min.css')}}">
     <script src="{{asset('public/backend/DataTables/js/jquery.dataTables.min.js')}}"></script>
     <script type="text/javascript">
-            $(document).ready(function() {
-                $('#myTable').DataTable();
-            });
-        </script>
-
-    <?php   $x = Session::get('trunglich');
-      $y = isset($x)?$x:null;
-      if($y != null){
-    ?>
-    <script type="text/javascript">
         $(document).ready(function() {
-            alert("<?php echo $y ; ?>");
+            $('#myTable').DataTable();
         });
     </script>
-    <?php } 
-     Session::put('trunglich',"" );
+
+    <?php $x = Session::get('trunglich');
+    $y = isset($x) ? $x : null;
+    if ($y != null) {
+    ?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                alert("<?php echo $y; ?>");
+            });
+        </script>
+    <?php }
+    Session::put('trunglich', "");
     ?>
 
 </head>
 
 <hr>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{URL::to('/trangcanhan')}}" class="btnx btn form-group">
-                &nbsp;&nbsp;&nbsp;  Hồ sơ bệnh nhân  &nbsp;&nbsp;&nbsp;
-                </a>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="{{URL::to('/trang-ca-nhan/lich-kham/')}}" class="btnx btn form-group">
-                &nbsp;&nbsp;&nbsp; Lịch khám bệnh &nbsp;&nbsp;&nbsp;
-                </a>
+<a href="{{URL::to('/trangcanhan')}}" class="btnx btn form-group">
+    &nbsp;&nbsp;&nbsp; Hồ sơ bệnh nhân &nbsp;&nbsp;&nbsp;
+</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{{URL::to('/trang-ca-nhan/lich-kham/')}}" class="btnx btn form-group">
+    &nbsp;&nbsp;&nbsp; Lịch khám bệnh &nbsp;&nbsp;&nbsp;
+</a>
 <section class="contact-section">
 
     <div class="container">
-    
+
         <div class="row">
-            <div class="col-2">
-              
+            <div class="col-1">
+
 
             </div>
-            <div id="form" class="col-8">
-            <h3>Lịch khám bệnh</h3>
+            <div id="form" class="col-10">
+                <h3>Lịch khám bệnh</h3>
                 <br>
                 <br>
-                <table id="myTable"  class="table table-bordered">
+                <table id="myTable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Thời gian</th>
@@ -60,6 +60,7 @@
                             <th>Khoa</th>
                             <th>Thanh toán</th>
                             <th>Trạng thái</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,26 +76,26 @@
                             } else {
                                 echo '<td class="success" data-label="Thanh toán :"> Online</td> ';
                             } ?>
-                             <?php if ($lk->Trangthai == 0) {
-                                    echo '  <td class="error" data-label="Trạng thái :">Chưa khám </td>';
-                                } else if ($lk->Trangthai == 2) {
-                                    echo '<td class="success" data-label="Trạng thái :">Đã khám </td> ';
-                                }
-                             else if ($lk->Trangthai == 1){
+                            <?php if ($lk->Trangthai == 0) {
+                                echo '  <td class="error" data-label="Trạng thái :">Chưa khám </td>';
+                            } else if ($lk->Trangthai == 2) {
+                                echo '<td class="success" data-label="Trạng thái :">Đã khám </td> ';
+                            } else if ($lk->Trangthai == 1) {
                                 echo '<td class="error" data-label="Trạng thái :">Vắng  </td> ';
                             } ?>
-                            
+                            <td><a style="color: blue;" href="{{url('/print-order/'.$lk->MaLK)}}">In phiếu</a></td>
+
                         </tr>
                         @endforeach
                     </tbody>
                 </table><?php if ($int > 4) { ?>
-                
-      
-                    
-                    <?php } ?>
+
+
+
+                <?php } ?>
 
             </div>
-          
+
         </div>
 
     </div>
@@ -175,17 +176,17 @@
     }
 
     .btnx {
-        
+
         -moz-user-select: none;
         text-transform: uppercase;
         color: black;
         cursor: pointer;
         display: inline-table;
-      
-        font-weight: 500;
-       
 
-      
+        font-weight: 500;
+
+
+
         transition: color 0.4s linear;
         position: relative;
         z-index: 1;
@@ -193,7 +194,7 @@
         overflow: hidden;
         margin: 0;
         line-height: 40px;
-      
+
         text-align: center;
     }
 
@@ -217,8 +218,8 @@
 
     }
 
-    
-    a:hover{
+
+    a:hover {
         color: black !important;
     }
 </style>
