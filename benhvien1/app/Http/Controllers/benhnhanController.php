@@ -121,7 +121,7 @@ class benhnhanController extends Controller
                 ->Join('lichtruc', 'lichkham.MaLT', '=', 'lichtruc.MaLT')
                 ->Join('bacsi', 'lichkham.MaBS', '=', 'bacsi.MaBS')
                 ->join('khoa', 'khoa.Makhoa', '=', 'bacsi.Makhoa')
-                ->where('benhnhan.MaTK', $id)->orderBy('NgayTruc', 'desc')->paginate(4);
+                ->where('benhnhan.MaTK', $id)->orderBy('NgayTruc', 'desc')->get();
         } else {
             $lich = DB::table('lichkham')
                 ->Join('benhnhan', 'lichkham.MaBN', '=', 'benhnhan.MaBN')
@@ -143,7 +143,7 @@ class benhnhanController extends Controller
         $MaLt = Session::get('MaL');
         $time =Session::get('time');
         $data['MaBN'] = $MaBN;
-        $count = DB::table('lichkham')->where('MaLT', $MaLt)->count();
+        $count = DB::table('lichkham')->where('MaLT', $MaLt)->where('giokham',$time)->count();
         $data['STT'] = $count + 1;
         $data['MaLT'] = $MaLt;
         $data['Thanhtoan'] = $key;
@@ -164,7 +164,7 @@ class benhnhanController extends Controller
         $data['MaBS'] = $key->MaBS;
         $giokham = $ngaykham." ".$time ;
         $data['giokham']=$giokham;
-        $test= DB::table('lichkham')->where('MaBN',$MaBN)->where('giokham',$giokham)->count();
+        $test= DB::table('lichkham')->where('MaLT',$MaLt)->where('MaBN',$MaBN)->where('giokham',$giokham)->count();
         if($test > 0){
             Session::put('trunglich',"Bệnh nhân đã có lịch khám trùng thời gian , Vui lòng kiểm tra lại ! " );
             return redirect('/trang-ca-nhan/lich-kham/');
@@ -190,6 +190,16 @@ class benhnhanController extends Controller
     {   
         $BN = DB::table('benhnhan')->where('MaBN', $MaBN)->get();
         echo $BN;
+    }
+    public function xoabenhnhan($MaBN){
+        $count = DB::table('lichkham')->where('MaBN',$MaBN)->count();
+        if($count > 0){
+            $mess = "Bệnh nhân đã có lịch khám , không thể xóa ! ";
+        }else{
+            DB::table('benhnhan')->where('MaBN',$MaBN)->delete();
+            $mess = "Đã xóa thành công !";
+        }
+        echo $mess;
     }
 
     public function capnhat(Request $re)

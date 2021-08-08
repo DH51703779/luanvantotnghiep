@@ -49,7 +49,7 @@ route::post('/xacthuc','loginController@xacthuc');
 route::post('/cap-nhat-mat-khau','loginController@capnhatmatkhau');
 route::get('/doimatkhau','loginController@doimatkhau');
 Route::get('/dienthongtin/chongio/{MaBS}','homecontroller@chonca');
-
+Route::get('/dienthongtin/chongio/gio/{MaBS}','homecontroller@chongio');
 // home 
 Route::get('/datlich', 'homecontroller@layout');
 Route::get('/quy-trinh', 'homecontroller@quytrinh');
@@ -59,7 +59,7 @@ Route::get('/dskhoa/{key}', 'homecontroller@dskhoa');
 Route::post('/timkiem', 'homecontroller@timkiem');
 Route::get('/lichkham/{id}','homecontroller@lichkham' );
 Route::get('/dienthongtin','homecontroller@diendangky');
-Route::get('dienthongtin/quan/{Maquan}','homecontroller@quan');
+Route::get('/quan/{Maquan}','homecontroller@quan');
 Route::get('/theongay','homecontroller@homnay');
 Route::get('dsbacsi/ngaytruc/{ngay}','homecontroller@ngaytruc');
 
@@ -71,6 +71,8 @@ Route::get('/trangcanhan','benhnhanController@trangcanhan');
 Route::get('/trangcanhan/chi-tiet-benh-nhan/{MaBN}','benhnhanController@chitietbenhnhan');
 Route::post('/trang-ca-nhan/cap-nhat','benhnhanController@capnhat');
 Route::get('/trang-ca-nhan/lich-kham/','benhnhanController@lichkham');
+Route::get('/trangcanhan/xoa/{MaBN}','benhnhanController@xoabenhnhan');
+Route::get('/trangcanhan/xoa/{MaBN}','benhnhanController@xoabenhnhan');
 //test 
 Route :: get('/test','homecontroller@test');
 

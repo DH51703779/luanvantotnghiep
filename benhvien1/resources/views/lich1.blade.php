@@ -356,77 +356,110 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
                                     <h5 class="card-title">` + data[i].HocVi + `</h5>
                                     <p class="card-text">` + data[i].TenBS + `</p>
                                     <p class="card-text"> Phòng :` + data[i].MaPhong + ` &nbsp; &nbsp;/ &nbsp;   Buổi ` + data[i].Buoi + `</p>
+                                    <input onclick="hii(` + data[i].MaLT + `,'`+data[i].Buoi+`')"  value="chọn" class="btn ahi" type="submit"  />
                                 </div>
                             </div>
                                        
                         </div>
                         </div>
-                        <div class="row g-0">
+                        <div id="`+data[i].MaLT+`" class="row g-0">
                          
-                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=07:00')}}"  class="col-3 box" >7:00 - 8:00</a>
-                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=08:00')}}"  class="col-3 box" >8:00 - 9:00</a>
-                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=09:00')}}"  class="col-3 box" >9:00 - 10:00</a>
-                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=10:00')}}"  class="col-3 box" >10:00 - 11:00</a> 
-                        </div>
-                        <hr>
-                        `
-
-                                        } else if ((data[i].Buoi.toLowerCase() === "chiều")) {
-                                            resultajax += `  <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                                <img height="100" width="100" src="{{asset('./public/backend/img/` + data[i].hinh + `')}}" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">` + data[i].HocVi + `</h5>
-                                    <p class="card-text">` + data[i].TenBS + `</p>
-                                    <p class="card-text"> Phòng :` + data[i].MaPhong + ` &nbsp; &nbsp;/ &nbsp;   Buổi ` + data[i].Buoi + `</p>
-                                </div>
-                            </div>
-                                       
-                        </div>
-                        </div>
-                        <div class="row g-0">
-                         
-                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=13:30')}}"  class="col-4 box" >13:30 - 14:30</a>
-                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=14:30')}}"  class="col-4 box" >14:30 - 15:30</a>
-                              <a href="{{URL::to('/dienthongtin?malt=`+data[i].MaLT+`&time=15:30')}}"  class="col-4 box" >15:30 - 16:30</a>
                             
                         </div>
                         <hr>
+                    
                         `
+
+                                        } else if ((data[i].Buoi.toLowerCase() === "chiều")) {
+                                            resultajax += ` <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img height="100" width="100" src="{{asset('./public/backend/img/` + data[i].hinh + `')}}" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">` + data[i].HocVi + `</h5>
+                            <p class="card-text">` + data[i].TenBS + `</p>
+                            <p class="card-text"> Phòng :` + data[i].MaPhong + ` &nbsp; &nbsp;/ &nbsp; Buổi ` + data[i].Buoi + `</p>
+                            <input onclick="hii(` + data[i].MaLT + `,'`+data[i].Buoi+`')"  value="chọn" class="btn ahi" type="submit"  />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="`+data[i].MaLT+`" class="row g-0">
+
+            
+            </div>
+            <hr>
+            `
 
                                         }
                                     }
                                 } else {
-                                    resultajax += `  <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row g-0">
-                            
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">Không có ca trực</h5>
-                                
-                                </div>
-                            </div>
+                                    resultajax += ` <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Không có ca trực</h5>
+
                         </div>
-                    </div>`
+                    </div>
+                </div>
+            </div> `
                                 }
 
                                 $('#bacsi').html(resultajax);
                             }
                         })
                     });
+
+
+
                 });
 
-                function time1() {
-                    alert("hello 1");
+                function hii(id,buoi) {
+                    $.ajax({
+                        url: '/benhvien1/dienthongtin/chongio/gio/' + id,
+                        method: "GET",
+                        success: function(data) {
+                            data = JSON.parse(data);
+                            var resultajax = '';
+                            console.log(data);
+                    $('#'+id).show();
+                    if (buoi.toLowerCase() === "sáng") {
+                        if(data[0].ca1 < 5){
+                            resultajax += ` <a href="{{URL::to('/dienthongtin?malt=` + id + `&time=07:00')}}"  class="col-3 box" >7:00 - 8:00 (`+data[0].ca1+`/5)</a>`
+                        }
+                        if(data[0].ca2 < 5){
+                            resultajax += ` <a href="{{URL::to('/dienthongtin?malt=` + id + `&time=08:00')}}"  class="col-3 box" >8:00 - 9:00 (`+data[0].ca2+`/5)</a>`
+                        }
+                        if(data[0].ca3 < 5){
+                            resultajax += ` <a href="{{URL::to('/dienthongtin?malt=` + id + `&time=09:00')}}"  class="col-3 box" >9:00 - 10:00 (`+data[0].ca3+`/5)</a>`
+                        }
+                        if(data[0].ca4 < 5){
+                            resultajax += ` <a href="{{URL::to('/dienthongtin?malt=` + id + `&time=010:00')}}"  class="col-3 box" >10:00 - 11:00 (`+data[0].ca4+`/5)</a>`
+                        }
+                        
+                    }
+                    else{
+                        if(data[0].ca5 < 5){
+                            resultajax += ` <a href="{{URL::to('/dienthongtin?malt=` + id + `&time=13:30')}}"  class="col-3 box" >13:30 - 14:30 (`+data[0].ca5+`/5)</a>`
+                        }
+                        if(data[0].ca6 < 5){
+                            resultajax += ` <a href="{{URL::to('/dienthongtin?malt=` + id + `&time=14:30')}}"  class="col-3 box" >14:30 - 15:30 (`+data[0].ca6+`/5)</a>`
+                        }
+                        if(data[0].ca7 < 5){
+                            resultajax += ` <a href="{{URL::to('/dienthongtin?malt=` + id + `&time=15:30')}}"  class="col-3 box" >15:30 - 16:30 (`+data[0].ca7+`/5)</a>`
+                        }
+                    }
+                    $('#'+id).html(resultajax);
+                           
 
-                };
-
-                function time2() {
-                    alert("hello2")
-                };
+                        }
+                    })
+                }
             </script>
 
             <div class="col-8">

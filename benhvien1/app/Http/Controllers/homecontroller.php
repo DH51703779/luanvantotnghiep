@@ -60,13 +60,7 @@ class homecontroller extends Controller
     }
     public function layout()
     {
-        // $ac = Session::get('id-user');
-        // if($ac){
-        // return view('datlich');
-        // }else
-        // {
-        //     return redirect('/dangnhap');
-        // }
+       
     $this->Alogin();
     return view('datlich');
     }
@@ -253,13 +247,27 @@ class homecontroller extends Controller
         echo $hihi;
         
     }
-    // $data = new stdClass;
-    // $LK = $l->MaLT;
-    // $data->MaLT=$LK;
-    // $data->Buoi=$l->Buoi;
-    // $data->NgayTruc=$l->NgayTruc;
-    // $data->MaBS=$l->MaBS;
-  
-    // $Count = DB::table('lichkham')->where('MaLT',$LK)->count();
-    // $data->count=$Count;
+    public function chongio($ma){
+            $count1= DB::table('lichkham')->where('MaLT',$ma)->where('giokham',"07:00:00")->count();
+            $count2= DB::table('lichkham')->where('MaLT',$ma)->where('giokham',"08:00:00")->count();
+            $count3= DB::table('lichkham')->where('MaLT',$ma)->where('giokham',"09:00:00")->count();
+            $count4= DB::table('lichkham')->where('MaLT',$ma)->where('giokham',"10:00:00")->count();
+            $count5= DB::table('lichkham')->where('MaLT',$ma)->where('giokham',"13:30:00")->count();
+            $count6= DB::table('lichkham')->where('MaLT',$ma)->where('giokham',"14:30:00")->count();
+            $count7= DB::table('lichkham')->where('MaLT',$ma)->where('giokham',"15:30:00")->count();
+            $data["ca1"]=$count1;
+            $data["ca2"]=$count2;
+            $data["ca3"]=$count3;
+            $data["ca4"]=$count4;
+            $data["ca5"]=$count5;
+            $data["ca6"]=$count6;
+            $data["ca7"]=$count7;
+            $a[]=$data;
+            $hihi = json_encode($a,true);
+            echo $hihi;
+
+            
+
+    }
+ 
 }

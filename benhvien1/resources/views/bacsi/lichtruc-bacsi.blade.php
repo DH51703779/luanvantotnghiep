@@ -60,13 +60,13 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
     $date2 = date_format($date1, "Y-m-d");
     $tag = false;
     if ($today == $date) {
-        $week .= '<td data-id="' . $date2 . '" class="btnday btny" >' . $day;
+        $week .= '<td data-id="' . $date2 . '" class="btnday success" >' . $day;
     } else {
         if($count>0){
         for ($i = 0; $i < $leng; $i++) {
             $NT = $LT1[$i];
             if (strtotime($date2) == strtotime($NT)) {
-                $week .= '<td data-id="' . $date2 . '" class="btnday" >' . $day;
+                $week .= '<td  data-id="' . $date2 . '" class="btnday danger" >' . $day;
                 $tag = true;
             }
         }
@@ -175,14 +175,13 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
                     })
                 });
             </script>
-
             <div class="col-8">
                 <div class="row"> &nbsp; &nbsp; &nbsp;
                     <a class="btny" href="?ym=<?php echo $prev; ?>">&lt;</a> &nbsp; &nbsp; &nbsp;
                     <span class="btny"><?php echo $html_title; ?></span> &nbsp; &nbsp; &nbsp;
                     <a class="btny" href="?ym=<?php echo $next; ?>">&gt;</a>
                     &nbsp;
-                    <a class="btny" href="{{URL::to('/lich-truc')}}">Hôm nay</a>
+                    <a class="btny" href="{{URL::to('/bac-si/lich-truc')}}">Hôm nay</a>
                 </div>
                 <br>
                 <table class="table table-bordered">
@@ -197,7 +196,6 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
                     </tr>
                     <?php
                     foreach ($weeks as $week) {
-
                         echo $week;
                     }
                     ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1:3306
--- Thời gian đã tạo: Th7 11, 2021 lúc 04:35 PM
+-- Thời gian đã tạo: Th8 08, 2021 lúc 12:41 PM
 -- Phiên bản máy phục vụ: 5.7.31
 -- Phiên bản PHP: 7.4.9
 
@@ -34,37 +34,40 @@ CREATE TABLE IF NOT EXISTS `bacsi` (
   `HocVi` varchar(100) NOT NULL DEFAULT 'ThS.BS',
   `gioitinh` varchar(1) NOT NULL,
   `DiaChi` varchar(100) NOT NULL,
-  `DienThoai` varchar(11) NOT NULL,
+  `DienThoai` varchar(100) NOT NULL,
   `MaKhoa` int(11) NOT NULL,
   `MaPhong` int(11) NOT NULL,
   `hinh` varchar(255) NOT NULL,
-  `TrangThaiBS` int(50) NOT NULL,
+  `TrangThaiBS` int(11) DEFAULT NULL,
   PRIMARY KEY (`MaBS`),
   KEY `MaPhong` (`MaPhong`),
   KEY `MaKhoa` (`MaKhoa`,`MaPhong`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `bacsi`
 --
 
 INSERT INTO `bacsi` (`MaBS`, `TenBS`, `HocVi`, `gioitinh`, `DiaChi`, `DienThoai`, `MaKhoa`, `MaPhong`, `hinh`, `TrangThaiBS`) VALUES
-(1, 'Bùi Thị Vạn Hạnh', 'ThS.BS', '0', '123 Hồng Bàng , Quận 6', '332004462', 6, 205, 'bacsinu.png', 1),
-(2, 'Phạm Hữu Luôn', 'PGS.TS.BS', '1', '255 Lý Thường Kiệt Q11', '332004462', 6, 206, 'bacsinam.png', 1),
-(3, 'Nguyễn Quốc Thành', 'ThS.BS', '1', '208 Trần Quốc Toản Q3', '332004463', 6, 205, 'bacsinam.png', 1),
-(4, 'Phan Thị Xinh', 'ThS.BS', '0', '222 Lê Văn Khương , Quận 12', '332004464', 6, 206, 'bacsinu.png', 1),
-(5, 'Dương Duy Khoa', 'ThS.BS', '1', '208 Trần Hưng Đạo ', '332004450', 5, 203, 'bacsinam.png', 1),
-(6, 'Nguyễn Hồ Lam', 'ThS.BS', '1', '120 Trần Thị Bảy , Quận 12', '332004462', 5, 204, 'bacsinam.png', 1),
-(7, 'Lê Thị Tuyết Lan', 'ThS.BS', '0', '257 Trần Phú Quận 5', '339718974', 5, 203, 'bacsinu.png', 1),
-(8, 'Thái Thị Thùy Linh', 'ThS.BS', '0', '120 Cao Thắng Q10', '332004422', 5, 204, 'bacsinu.png', 1),
-(9, 'Vũ Bá Cương', 'ThS.BS', '1', '545 Lê Lợi', '332004464', 4, 201, 'bacsinam.png', 0),
-(10, 'Đỗ Phước Hùng', 'ThS.BS', '1', '275 Thành Thái Q10', '585002145', 4, 202, 'bacsinam.png', 0),
-(11, 'Chu Lan Anh ', 'ThS.BS', '0', '120 Thành Thái', '97564123', 3, 105, 'bacsinu.png', 0),
-(12, 'Võ Hiếu Bình', 'ThS.BS', '1', '120 Hàm Nghi Q1', '53456789', 3, 106, 'bacsinam.png', 0),
-(13, 'Bùi Cao Mỹ Ái', 'ThS.BS', '0', '22 Lý Thái Tổ Quận 10', '932345764', 2, 103, 'bacsinu.png', 1),
-(14, 'Trương Quang Bình ', 'ThS.BS', '1', '22 Tô Ký Quận 12', '923465874', 2, 104, 'bacsinam.png', 0),
-(15, 'Lê Nguyễn Như Ý', 'ThS.BS', '0', 'Trung Mý Tây . Quận 12', '323457888', 1, 101, 'bacsinu.png', 1),
-(16, 'Vũ Minh Luân', 'ThS.BS', '1', 'Nguyễn Thị Đặng ,Quận 12', '326484569', 1, 102, 'bacsinam.png', 0);
+(1, 'Bùi Thị Vạn Hạnh', 'G.S,T.S', '0', '123 Hồng Bàng , Quận 6', '0332004462', 6, 205, 'nu17.png', 1),
+(2, 'Phạm Hữu Luôn', 'G.S,T.S', '1', '255 Lý Thường Kiệt Q11', '0332004462', 6, 206, 'nam53.png', 1),
+(3, 'Nguyễn Quốc Thành', 'G.S,T.S', '1', '208 Trần Quốc Toản Q3', '0332004463', 6, 205, 'nam79.png', 1),
+(4, 'Phan Thị Xinh', 'G.S,T.S', '0', '222 Lê Văn Khương , Quận 12', '0332004464', 6, 206, 'nu37.png', 1),
+(5, 'Dương Duy Khoa', 'G.S,T.S', '1', '208 Trần Hưng Đạo', '0332004450', 5, 203, 'nam39.png', 1),
+(6, 'Nguyễn Hồ Lam', 'G.S,T.S', '1', '120 Trần Thị Bảy , Quận 12', '0332004462', 5, 204, 'nam85.png', 1),
+(7, 'Lê Thị Tuyết Lan', 'G.S,T.S', '0', '257 Trần Phú Quận 5', '0339718974', 5, 203, 'nu18.png', 1),
+(8, 'Thái Thị Thùy Linh', 'G.S,T.S', '0', '120 Cao Thắng Q10', '0332004422', 5, 204, 'nu45.png', 1),
+(9, 'Vũ Bá Cương', 'G.S,T.S', '1', '545 Lê Lợi', '0332004464', 4, 201, 'nam46.png', 1),
+(10, 'Đỗ Phước Hùng', 'G.S,T.S', '1', '275 Thành Thái Q10', '0585002145', 4, 202, 'nam99.png', 1),
+(11, 'Chu Lan Anh', 'G.S,T.S', '0', '120 Thành Thái', '0975641237', 3, 105, 'nu40.png', 1),
+(12, 'Võ Hiếu Bình', 'G.S,T.S', '1', '120 Hàm Nghi Q1', '0534567897', 3, 106, 'nam24.png', 1),
+(13, 'Bùi Cao Mỹ Ái', 'G.S,T.S', '0', '22 Lý Thái Tổ Quận 10', '0932345764', 2, 103, 'nu20.png', 1),
+(14, 'Trương Quang Bình', 'G.S,T.S', '1', '22 Tô Ký Quận 12', '0923465874', 2, 104, 'nam55.png', 1),
+(15, 'Lê Nguyễn Như Ý', 'G.S,T.S', '0', 'Trung Mý Tây . Quận 12', '0323457888', 1, 101, 'nu57.png', 1),
+(16, 'Vũ Minh Luân', 'G.S,T.S', '1', 'Nguyễn Thị Đặng ,Quận 12', '0326484569', 1, 102, 'nam55.png', 1),
+(17, 'Nguyễn Thanh Ngân', 'G.S,T.S', '1', '132 Lê Văn Khương Q12', '0385641230', 6, 206, 'nam12.png', 1),
+(19, 'Lê Thị Cẩm Đào', 'G.S,T.S', '0', '132 Lê Văn Khương Q12', '0974968446', 4, 201, 'nu41.png', 1),
+(20, 'Phạm Ngọc Thịnh', 'G.S,T.S', '1', 'chợ cầu', '0382314245', 4, 202, 'nam87.png', 1);
 
 -- --------------------------------------------------------
 
@@ -85,27 +88,43 @@ CREATE TABLE IF NOT EXISTS `benhnhan` (
   `hinh` varchar(255) DEFAULT NULL,
   `MaTK` int(11) NOT NULL,
   PRIMARY KEY (`MaBN`)
-) ENGINE=InnoDB AUTO_INCREMENT=187 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `benhnhan`
 --
 
 INSERT INTO `benhnhan` (`MaBN`, `TenBN`, `gioitinh`, `Ngaysinh`, `DiaChi`, `DienThoai`, `CMND`, `Tiensubenh`, `hinh`, `MaTK`) VALUES
-(136, 'lê thị cẩm bầu', 0, '1999-06-09', '37/25/19 lâm thị hố', '0974968446', '025688690', 'không bị bệnh', NULL, 0),
-(137, 'lê thị cẩm bầu', 0, '1999-06-09', '37/25/19 lâm thị hố', '0974968446', '025688690', 'không bị bệnh', NULL, 1),
-(166, 'Văn BA', 0, '2021-06-10', '158 Lê Duẫn ,Phường 14, Quận 3,TP.Hồ Chí Minh', '0585003265', '0123456789', NULL, 'Văn BA47.jpg', 1),
-(168, 'Lê Hoàn Long', 1, '2021-06-15', 'null', '0332004469', '042099000014', NULL, 'Lê Hoàn Long39.jpg', 1),
-(170, 'Lê Hoàn Long', 1, '2021-06-01', '158 Lê Duẫn ,Phường Trung Mỹ Tây, Quận 12,TP.Hồ Chí Minh  ,, ,TP.Hồ Chí Minh', '0585003265', '042099000014', NULL, 'Lê Hoàn Long58.jpg', 1),
-(178, 'Văn BC', 0, '2021-06-10', ',, ,TP.Hồ Chí Minh', '0585003265', '0123456789', NULL, '', 1),
+(166, 'Văn BA', 0, '2019-06-17', '158 Lê Duẫn ,Phường 14, Quận 3,TP.Hồ Chí Minh', '0585003265', '0123456789', 'không có bệnh', 'Văn BA47.jpg', 1),
+(170, 'Lê Hoàn Long', 1, '2021-06-01', '158 Lê Duẫn ,Phường Trung Mỹ Tây, Quận 12,TP.Hồ Chí Minh', '0585003265', '042099000014', 'không có bệnh', 'Lê Hoàn Long58.jpg', 1),
+(178, 'Văn BC', 0, '2021-06-10', 'TP.Hồ Chí Minh', '0585003265', '0123456789', NULL, '', 1),
 (179, 'Lê Hoàn Long', 1, '2021-06-11', '158 Lê Duẫn ,Phường 17, Quận Phú Nhuận,TP.Hồ Chí Minh', '0585003261', '0123456789', NULL, '', 1),
 (180, 'Lê Hoàn Long', 1, '2021-06-02', '158 Lê Duẫn ,Phường 28, Quận Bình Thạnh,TP.Hồ Chí Minh', '0332004470', '0123456789', NULL, '', 1),
-(181, 'Lê Hoàn Long', 1, '2021-06-02', '158 Lê Duẫn ,Phường 28, Quận Bình Thạnh,TP.Hồ Chí Minh', '0332004470', '0123456789', NULL, '', 1),
-(182, 'Lê Hoàn Long', 1, '2021-06-02', '158 Lê Duẫn ,Phường 28, Quận Bình Thạnh,TP.Hồ Chí Minh', '0332004470', '0123456789', NULL, '', 1),
-(183, 'Lê Hoàn Long', 1, '2021-06-02', '158 Lê Duẫn ,Phường 28, Quận Bình Thạnh,TP.Hồ Chí Minh', '0332004470', '0123456789', NULL, '', 1),
-(184, 'Nguyễn Thanh', 1, '2021-07-14', '158 Lê Duẫn ,, Quận Gò Vấp,TP.Hồ Chí Minh', '0332004470', '042099000145', NULL, '', 1),
+(181, 'Lê Hoàn Long', 1, '2021-06-02', '158 Lê Duẫn ,Phường 28, Quận Bình Thạnh,TP.Hồ Chí Minh', '0332004470', '0123456789', 'đau họng hạt', '', 1),
+(182, 'Lê Hoàn Long', 1, '2021-06-02', '158 Lê Duẫn ,Phường 28, Quận Bình Thạnh,TP.Hồ Chí Minh', '0332004470', '0123456789', 'Lao', '', 1),
+(183, 'Lê Hoàn Long', 1, '2021-06-02', '158 Lê Duẫn ,Phường 28, Quận Bình Thạnh,TP.Hồ Chí Minh', '0332004470', '0123456789', 'Ho dai', '', 1),
+(184, 'Nguyễn Thanh', 1, '2021-07-14', '158 Lê Duẫn ,Quận Gò Vấp,TP.Hồ Chí Minh', '0332004470', '042099000145', 'không có bệnh', '', 1),
 (185, 'Lê Hoàn Long', 1, '2021-07-08', '158 Lê Duẫn ,Phường 15, Quận Tân Bình,TP.Hồ Chí Minh', '0332004469', '0123456789', NULL, '', 13),
-(186, 'Lê Hoàn Long', 1, '2021-07-08', '158 Lê Duẫn ,Phường 17, Quận Phú Nhuận,TP.Hồ Chí Minh', '0585003265', '0123456789', NULL, '', 13);
+(186, 'Lê Hoàn Long', 1, '2021-07-08', '158 Lê Duẫn ,Phường 17, Quận Phú Nhuận,TP.Hồ Chí Minh', '0585003265', '0123456789', NULL, '', 13),
+(188, 'Nguyễn Thanh Ngân', 1, '1999-12-21', 'TP.Hồ Chí Minh', '8485989080', '9598968986', 'không có bệnh', '', 15),
+(189, 'TrungMinh123aa', 1, '1999-09-25', '37/25/14 tân chánh hiẹp ,Phường Tân Chánh Hiệp, Quận 12,TP.Hồ Chí Minh', '0974968446', '025866870', 'không có bệnh', '', 16),
+(190, 'Nguyễn Văn A', 1, '2020-07-09', '389 58 ,Phường 17, Quận Phú Nhuận,TP.Hồ Chí Minh', '0332004485', '042099000015', NULL, '', 14),
+(193, 'Nguyễn Văn A', 1, '2020-08-01', '389 58 ,Phường 14, Quận 3,TP.Hồ Chí Minh', '0332004485', '042099000015', NULL, '', 13);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `hocvi`
+--
+
+DROP TABLE IF EXISTS `hocvi`;
+CREATE TABLE IF NOT EXISTS `hocvi` (
+  `MaHV` int(11) NOT NULL AUTO_INCREMENT,
+  `TenHV` varchar(50) NOT NULL,
+  `MaBS` int(11) NOT NULL,
+  PRIMARY KEY (`MaHV`),
+  KEY `MaBS` (`MaBS`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -115,12 +134,12 @@ INSERT INTO `benhnhan` (`MaBN`, `TenBN`, `gioitinh`, `Ngaysinh`, `DiaChi`, `Dien
 
 DROP TABLE IF EXISTS `khoa`;
 CREATE TABLE IF NOT EXISTS `khoa` (
-  `MaKhoa` int(11) NOT NULL,
+  `MaKhoa` int(11) NOT NULL AUTO_INCREMENT,
   `TenKhoa` varchar(100) NOT NULL,
   `gia` int(11) NOT NULL,
   `Hinh` varchar(100) NOT NULL,
   PRIMARY KEY (`MaKhoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `khoa`
@@ -132,7 +151,7 @@ INSERT INTO `khoa` (`MaKhoa`, `TenKhoa`, `gia`, `Hinh`) VALUES
 (3, 'Tai mũi họng', 150000, 'tai.png'),
 (4, 'Xương khớp ', 150000, 'xuong.png'),
 (5, 'Hô hấp', 150000, 'hohap.png'),
-(6, 'Huyết học', 150000, 'huyethoc.png');
+(6, 'Huyết học', 150000, 'huyethoc52.png');
 
 -- --------------------------------------------------------
 
@@ -146,49 +165,35 @@ CREATE TABLE IF NOT EXISTS `lichkham` (
   `MaBN` int(11) NOT NULL,
   `MaLT` int(11) NOT NULL,
   `MaBS` int(11) NOT NULL,
-  `STT` int(11) NOT NULL,
   `TongTien` int(11) NOT NULL,
   `Thanhtoan` varchar(11) NOT NULL,
   `Trangthai` int(11) NOT NULL,
+  `STT` int(11) NOT NULL,
+  `giokham` time DEFAULT NULL,
   PRIMARY KEY (`MaLK`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `lichkham`
 --
 
-INSERT INTO `lichkham` (`MaLK`, `MaBN`, `MaLT`, `MaBS`, `STT`, `TongTien`, `Thanhtoan`, `Trangthai`) VALUES
-(50, 166, 115, 1, 1, 150000, '0', 0),
-(51, 167, 55, 5, 1, 150000, '0', 0),
-(52, 168, 55, 5, 2, 150000, '1', 0),
-(53, 169, 55, 5, 3, 150000, '0', 0),
-(54, 170, 55, 5, 4, 150000, '0', 0),
-(55, 166, 42, 2, 1, 150000, '0', 0),
-(56, 168, 115, 1, 2, 150000, '0', 0),
-(57, 168, 116, 1, 1, 150000, '0', 0),
-(63, 166, 115, 1, 3, 150000, '0', 0),
-(64, 166, 115, 1, 4, 150000, '0', 0),
-(65, 166, 115, 1, 5, 150000, '0', 0),
-(66, 166, 116, 1, 2, 150000, '0', 0),
-(67, 166, 122, 1, 1, 150000, '0', 2),
-(68, 168, 123, 1, 1, 150000, '1', 1),
-(69, 170, 123, 1, 2, 150000, '0', 2),
-(70, 178, 125, 1, 1, 150000, '0', 0),
-(71, 170, 125, 1, 2, 150000, '0', 0),
-(72, 179, 125, 1, 3, 150000, '1', 0),
-(73, 185, 141, 1, 1, 150000, '0', 0),
-(74, 186, 141, 1, 2, 150000, '1', 0),
-(75, 185, 141, 1, 3, 150000, '0', 0),
-(76, 185, 141, 1, 4, 150000, '0', 0),
-(77, 186, 142, 2, 1, 150000, '0', 0),
-(78, 186, 141, 1, 5, 150000, '0', 0),
-(79, 186, 141, 1, 6, 150000, '0', 0),
-(80, 185, 141, 1, 7, 150000, '0', 0),
-(81, 185, 142, 2, 2, 150000, '0', 0),
-(82, 185, 213, 1, 1, 150000, '0', 0),
-(83, 186, 213, 1, 2, 150000, '0', 0),
-(84, 185, 213, 1, 3, 150000, '0', 0),
-(85, 185, 213, 1, 4, 150000, '0', 0);
+INSERT INTO `lichkham` (`MaLK`, `MaBN`, `MaLT`, `MaBS`, `TongTien`, `Thanhtoan`, `Trangthai`, `STT`, `giokham`) VALUES
+(107, 179, 257, 1, 150000, '0', 0, 1, '08:00:00'),
+(110, 186, 257, 1, 150000, '0', 0, 2, '08:00:00'),
+(111, 185, 257, 1, 150000, '0', 0, 3, '08:00:00'),
+(112, 185, 257, 1, 150000, '0', 0, 4, '07:00:00'),
+(113, 186, 268, 1, 150000, '0', 0, 1, '07:00:00'),
+(114, 185, 268, 1, 150000, '0', 0, 2, '08:00:00'),
+(115, 186, 268, 1, 150000, '0', 0, 3, '08:00:00'),
+(116, 185, 268, 1, 150000, '0', 0, 4, '09:00:00'),
+(117, 186, 268, 1, 150000, '0', 0, 5, '09:00:00'),
+(118, 186, 267, 1, 150000, '0', 0, 1, '14:30:00'),
+(119, 193, 268, 1, 150000, '0', 0, 6, '07:00:00'),
+(120, 179, 257, 1, 150000, '0', 0, 5, '08:00:00'),
+(121, 179, 257, 1, 150000, '0', 0, 5, '08:00:00'),
+(122, 179, 268, 1, 150000, '0', 0, 5, '08:00:00'),
+(123, 179, 268, 1, 150000, '0', 0, 5, '08:00:00'),
+(124, 179, 268, 1, 150000, '0', 0, 5, '08:00:00');
 
 -- --------------------------------------------------------
 
@@ -204,45 +209,13 @@ CREATE TABLE IF NOT EXISTS `lichtruc` (
   `MaBS` int(11) NOT NULL,
   PRIMARY KEY (`MaLT`),
   KEY `MaBS` (`MaBS`)
-) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=269 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `lichtruc`
 --
 
 INSERT INTO `lichtruc` (`MaLT`, `Buoi`, `NgayTruc`, `MaBS`) VALUES
-(82, 'Chiều ', '2021-06-17', 11),
-(83, 'Sáng', '2021-06-18', 11),
-(84, 'Chiều ', '2021-06-18', 12),
-(85, 'Sáng', '2021-06-12', 13),
-(86, 'Chiều', '2021-06-12', 14),
-(87, 'Sáng', '2021-06-13', 14),
-(88, 'Chiều', '2021-06-13', 13),
-(89, 'Sáng', '2021-06-14', 13),
-(90, 'Chiều ', '2021-06-14', 14),
-(91, 'Sáng ', '2021-06-15', 14),
-(92, 'Chiều ', '2021-06-15', 13),
-(93, 'Sáng', '2021-06-16', 13),
-(94, 'Chiều', '2021-06-16', 14),
-(95, 'Sáng', '2021-06-17', 14),
-(96, 'Chiều ', '2021-06-17', 13),
-(97, '0', '2021-06-30', 13),
-(98, 'Chiều ', '2021-06-18', 14),
-(99, 'Sáng', '2021-06-12', 15),
-(100, 'Chiều', '2021-06-12', 16),
-(101, 'Sáng', '2021-06-13', 16),
-(102, 'Chiều', '2021-06-15', 11),
-(103, 'Sáng', '2021-06-14', 15),
-(104, 'Chiều ', '2021-06-14', 16),
-(105, 'Sáng ', '2021-06-15', 16),
-(106, 'Chiều ', '2021-06-15', 15),
-(107, 'Sáng', '2021-06-16', 15),
-(108, 'Chiều', '2021-06-16', 16),
-(109, 'Sáng', '2021-06-17', 16),
-(110, 'Chiều ', '2021-06-17', 15),
-(111, 'Sáng', '2021-06-18', 15),
-(112, 'Chiều ', '2021-06-18', 16),
-(113, '1', '2021-06-24', 9),
 (121, 'Sáng', '2021-06-22', 1),
 (122, 'Sáng', '2021-06-23', 1),
 (123, 'Chiều', '2021-06-24', 1),
@@ -268,56 +241,6 @@ INSERT INTO `lichtruc` (`MaLT`, `Buoi`, `NgayTruc`, `MaBS`) VALUES
 (144, 'Chiều', '2021-06-29', 6),
 (145, 'Sáng', '2021-06-30', 7),
 (146, 'Chiều', '2021-06-30', 8),
-(147, 'Sáng', '2021-07-01', 5),
-(148, 'Chiều ', '2021-07-01', 6),
-(149, 'Sáng ', '2021-07-02', 7),
-(150, 'Chiều ', '2021-07-02', 8),
-(151, 'Sáng', '2021-07-03', 8),
-(152, 'Chiều', '2021-07-03', 7),
-(153, 'Sáng', '2021-07-04', 6),
-(154, 'Chiều ', '2021-07-04', 5),
-(155, 'Sáng', '2021-07-05', 5),
-(156, 'Chiều ', '2021-07-05', 7),
-(157, 'Sáng', '2021-06-29', 9),
-(158, 'Chiều', '2021-06-29', 10),
-(159, 'Sáng', '2021-06-30', 9),
-(160, 'Chiều', '2021-06-30', 10),
-(161, 'Sáng', '2021-07-01', 9),
-(162, 'Chiều ', '2021-07-01', 10),
-(163, 'Sáng ', '2021-07-02', 9),
-(164, 'Chiều ', '2021-07-02', 10),
-(165, 'Sáng', '2021-07-03', 9),
-(166, 'Chiều', '2021-07-03', 10),
-(167, 'Sáng', '2021-07-04', 9),
-(168, 'Chiều ', '2021-07-04', 10),
-(169, 'Sáng', '2021-07-05', 9),
-(170, 'Chiều ', '2021-07-05', 10),
-(171, 'Sáng', '2021-06-29', 11),
-(172, 'Chiều', '2021-06-29', 12),
-(173, 'Sáng', '2021-06-30', 11),
-(174, 'Chiều', '2021-06-30', 10),
-(175, 'Sáng', '2021-07-01', 11),
-(176, 'Chiều ', '2021-07-01', 12),
-(177, 'Sáng ', '2021-07-02', 11),
-(178, 'Chiều ', '2021-07-02', 12),
-(179, 'Sáng', '2021-07-03', 11),
-(180, 'Chiều', '2021-07-03', 12),
-(181, 'Sáng', '2021-07-04', 11),
-(182, 'Chiều ', '2021-07-04', 12),
-(183, 'Sáng', '2021-07-05', 11),
-(184, 'Chiều ', '2021-07-05', 12),
-(185, 'Sáng', '2021-06-29', 13),
-(186, 'Chiều', '2021-06-29', 14),
-(187, 'Sáng', '2021-06-30', 13),
-(188, 'Chiều', '2021-06-30', 14),
-(189, 'Sáng', '2021-07-01', 13),
-(190, 'Chiều ', '2021-07-01', 14),
-(191, 'Sáng ', '2021-07-02', 13),
-(192, 'Chiều ', '2021-07-02', 14),
-(193, 'Sáng', '2021-07-03', 13),
-(194, 'Chiều', '2021-07-03', 14),
-(195, 'Sáng', '2021-07-04', 13),
-(196, 'Chiều ', '2021-07-04', 14),
 (197, 'Sáng', '2021-07-05', 13),
 (198, 'Chiều ', '2021-07-05', 14),
 (199, 'Sáng', '2021-06-29', 15),
@@ -334,7 +257,83 @@ INSERT INTO `lichtruc` (`MaLT`, `Buoi`, `NgayTruc`, `MaBS`) VALUES
 (210, 'Chiều ', '2021-07-04', 16),
 (211, 'Sáng', '2021-07-05', 15),
 (212, 'Chiều ', '2021-07-05', 16),
-(213, 'Sáng', '2021-07-07', 1);
+(213, 'Sáng', '2021-07-07', 1),
+(214, 'Sáng', '2021-07-07', 1),
+(215, 'Sáng', '2021-07-08', 2),
+(216, 'Chiều', '2021-07-08', 1),
+(217, 'Sáng', '2021-07-09', 3),
+(218, 'Chiều', '2021-07-09', 4),
+(219, 'Sáng', '2021-07-08', 5),
+(220, 'Chiều', '2021-07-08', 6),
+(221, 'Sáng', '2021-07-09', 7),
+(222, 'Chiều', '2021-07-09', 8),
+(223, 'Sáng', '2021-07-08', 9),
+(224, 'Chiều', '2021-07-08', 10),
+(225, 'Sáng', '2021-07-09', 11),
+(226, 'Chiều', '2021-07-09', 12),
+(227, 'Sáng', '2021-07-08', 13),
+(228, 'Chiều', '2021-07-08', 14),
+(229, 'Sáng', '2021-07-09', 15),
+(230, 'Chiều', '2021-07-09', 16),
+(232, 'Chiều', '2021-07-10', 14),
+(233, 'Sáng', '2021-07-11', 15),
+(234, 'Chiều', '2021-07-11', 16),
+(235, 'Sáng', '2021-07-10', 10),
+(236, 'Chiều', '2021-07-10', 11),
+(237, 'Sáng', '2021-07-11', 12),
+(238, 'Chiều', '2021-07-11', 13),
+(239, 'Sáng', '2021-07-10', 9),
+(240, 'Chiều', '2021-07-10', 6),
+(241, 'Sáng', '2021-07-11', 8),
+(242, 'Chiều', '2021-07-11', 7),
+(243, 'Sáng', '2021-07-10', 5),
+(244, 'Chiều', '2021-07-10', 4),
+(245, 'Sáng', '2021-07-11', 3),
+(246, 'Chiều', '2021-07-11', 2),
+(247, '0', '2021-07-24', 4),
+(248, '0', '2021-07-13', 9),
+(249, '0', '2021-07-13', 17),
+(250, '0', '2021-07-14', 17),
+(251, '0', '2021-07-23', 17),
+(252, '0', '2021-07-21', 16),
+(253, '0', '2021-07-25', 16),
+(254, '0', '2021-07-22', 1),
+(255, 'Sáng', '2021-07-31', 1),
+(256, 'Sáng', '2021-08-03', 16),
+(257, 'Sáng', '2021-08-05', 1),
+(258, 'Sáng', '2021-08-04', 1),
+(259, 'Chiều', '2021-08-05', 1),
+(260, 'sáng ', '2021-08-05', 1),
+(261, 'Sáng', '2021-08-06', 4),
+(262, 'Chiều', '2021-08-06', 4),
+(263, 'Sáng', '2021-08-07', 1),
+(264, 'Chiều', '2021-08-08', 1),
+(265, 'Chiều', '2021-08-07', 1),
+(266, 'Sáng', '2021-08-12', 1),
+(267, 'Chiều', '2021-08-12', 1),
+(268, 'Sáng', '2021-08-11', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `payments`
+--
+
+DROP TABLE IF EXISTS `payments`;
+CREATE TABLE IF NOT EXISTS `payments` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `p_trans_id` int(11) DEFAULT NULL,
+  `p_user_id` int(11) DEFAULT NULL,
+  `p_money` double(8,2) DEFAULT NULL COMMENT 'số tiền thanh toán',
+  `p_note` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'số tiền thanh toán',
+  `p_vnp_response_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Mã phản hồi',
+  `p_code_nvpay` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Mã giao dịch Vnpay',
+  `p_code_bank` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Mã ngân hàng',
+  `p_time` datetime DEFAULT NULL COMMENT 'Thời gian chuyển khoản',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -359,6 +358,7 @@ INSERT INTO `phong` (`MaPhong`, `MaKhoa`) VALUES
 (102, 1),
 (103, 2),
 (104, 2),
+(190, 2),
 (105, 3),
 (106, 3),
 (201, 4),
@@ -12308,7 +12308,7 @@ CREATE TABLE IF NOT EXISTS `taikhoan` (
   `code` int(11) DEFAULT NULL,
   `VaiTro` int(11) NOT NULL,
   PRIMARY KEY (`MaTK`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `taikhoan`
@@ -12326,8 +12326,12 @@ INSERT INTO `taikhoan` (`MaTK`, `Ten`, `email`, `Sodienthoai`, `MatKhau`, `MaBS`
 (9, 'vubacuong9', '', '0332004489', '123456', 9, 0, 2),
 (10, 'vuminhluan16', '', '0332004489', '123456', 16, 0, 2),
 (11, 'dophuochung10', '', '0332004489', '123456', 10, 0, 2),
-(12, 'Lê Hoàn Long', '', 'sdsdsd', '123456', NULL, 0, 0),
-(13, 'sdsd', 'perseusnguyen210@gmail.com', '0339718978', '123456', NULL, NULL, 0);
+(13, 'sdsd', 'perseusnguyen210@gmail.com', '0339718978', '123456', NULL, NULL, 0),
+(14, 'ss', 'ss@gmail.com', '1234567899', '123456', NULL, NULL, 0),
+(15, 'Nguyễn Thanh Ngân', 'q211201@gmail.com', '0528162392', '123456789', NULL, NULL, 0),
+(16, 'TrungMinh123aa', 'buiphamminhtrung1999@gmail.com', '0974968446', '123123123', NULL, NULL, 0),
+(17, 'Nguyễn Văn Dậu', 'DH51703779@student.stu.edu.vn', '0332004468', '123456', NULL, NULL, 0),
+(18, 'phamngocthinh20', NULL, '0123456789', '123456', 20, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -12425,19 +12429,96 @@ CREATE TABLE IF NOT EXISTS `tinnhan` (
   `noidung` varchar(1000) NOT NULL,
   `thoigian` datetime DEFAULT NULL,
   PRIMARY KEY (`MaTN`)
-) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
 
 --
 -- Đang đổ dữ liệu cho bảng `tinnhan`
 --
 
 INSERT INTO `tinnhan` (`MaTN`, `Magui`, `Manhan`, `noidung`, `thoigian`) VALUES
-(110, 10, 6, 'alo', '2021-07-11 18:57:14'),
-(109, 6, 10, 'nghe r', '2021-07-11 18:56:46'),
-(108, 10, 6, 'alo', '2021-07-11 18:56:51'),
-(107, 10, 6, 'thick hi ko ?', '2021-07-11 18:54:32'),
-(106, 6, 10, 'hey', '2021-07-11 18:54:22'),
-(105, 10, 6, 'alo', '2021-07-11 18:54:09');
+(1, 6, 10, 'Hello', '2021-06-24 15:33:17'),
+(2, 6, 10, 'Bạn tên gì ?', '2021-06-24 15:33:17'),
+(3, 10, 6, 'Tôi tên Luân ', '2021-06-24 14:15:52'),
+(4, 10, 6, 'Còn bạn ?', '2021-06-24 14:15:52'),
+(5, 6, 10, 'Tôi tên Hạnh , bạn bao nhiêu tuổi ', '2021-06-24 15:33:17'),
+(6, 10, 6, 'tôi 10 tuổi ? ', '2021-06-24 14:15:52'),
+(7, 6, 10, 'ssss', '2021-06-24 15:33:17'),
+(8, 10, 6, 'aaa', '2021-06-24 14:15:52'),
+(9, 6, 10, 'aaaa', '2021-06-24 15:33:17'),
+(10, 6, 10, 'bbb', '2021-06-24 15:33:17'),
+(11, 6, 10, 'ccc', '2021-06-24 15:33:17'),
+(12, 6, 10, 'kjkk', '2021-06-24 15:33:17'),
+(13, 6, 10, 'ahihi', '2021-06-24 15:33:17'),
+(14, 6, 10, 'ahihic', '2021-06-24 15:33:17'),
+(15, 10, 6, 'cc', '2021-06-24 14:15:52'),
+(16, 10, 6, 'anh yêu em', '2021-06-24 14:15:52'),
+(17, 10, 6, 'anh yêu em', '2021-06-24 14:15:52'),
+(18, 10, 6, 'anh yêu em', '2021-06-24 14:15:52'),
+(19, 10, 6, 'hjh', '2021-06-24 14:15:52'),
+(20, 10, 6, 'jk', '2021-06-24 14:15:52'),
+(68, 10, 6, 'chào em', '2021-06-24 17:04:21'),
+(67, 10, 6, 'anh yêu em', '2021-06-24 16:56:31'),
+(66, 10, 6, 'anh yêu em', '2021-06-24 16:56:31'),
+(65, 10, 6, 'anh yêu em', '2021-06-24 16:56:31'),
+(64, 10, 6, 'a', '2021-06-24 16:56:31'),
+(63, 10, 6, 'anh yêu em', '2021-06-24 16:56:31'),
+(62, 6, 10, 'anh yêu em', '2021-06-24 16:39:42'),
+(61, 10, 6, 'ahihi', '2021-06-24 15:50:51'),
+(53, 10, 6, 'cl', '2021-06-24 15:43:49'),
+(60, 10, 6, 'anh cũng yêu em', '2021-06-24 15:50:27'),
+(59, 6, 10, 'anh yêu em', '2021-06-24 15:50:04'),
+(58, 10, 6, 'em đnag làm gì v ?', '2021-06-24 15:49:45'),
+(57, 10, 6, 'anh yeue em', '2021-06-24 15:49:45'),
+(56, 10, 6, 'aaaa', '2021-06-24 15:49:45'),
+(55, 6, 10, 'ahihi', '2021-06-24 15:45:25'),
+(54, 10, 6, 'sds', '2021-06-24 15:43:49'),
+(52, 6, 10, 'cc', '2021-06-24 15:33:17'),
+(51, 6, 10, 'ok', '2021-06-24 15:33:17'),
+(69, 10, 6, 'chào em', '2021-06-24 17:04:21'),
+(70, 6, 10, 'anh yêu em', '2021-06-24 17:04:47'),
+(71, 10, 6, 'anh yêu em', '2021-06-24 17:06:47'),
+(72, 10, 6, 'chào em', '2021-06-24 17:06:47'),
+(73, 10, 6, 'chào em', '2021-06-24 17:06:47'),
+(74, 10, 6, 'hello', '2021-06-24 17:06:47'),
+(75, 6, 10, 'ẻdfdf', '2021-06-24 17:07:50'),
+(76, 10, 6, 'chào em', '2021-06-24 17:10:36'),
+(77, 6, 10, 's', '2021-06-24 17:16:47'),
+(78, 6, 10, 'sdsd', '2021-06-24 17:16:47'),
+(79, 6, 10, 'sdsdsd', '2021-06-24 17:16:47'),
+(80, 10, 6, 'chaof em', '2021-06-24 17:36:48'),
+(81, 10, 6, 'chaof e lan 2', '2021-06-24 17:36:48'),
+(82, 10, 6, 'anh chao em nha', '2021-06-24 17:36:48'),
+(83, 6, 10, 'chaof lai a', '2021-06-24 17:37:55'),
+(84, 6, 10, 'fdfdf', '2021-06-24 17:39:47'),
+(85, 10, 6, 'dfdfdf', '2021-06-24 17:40:43'),
+(86, 6, 10, 'ahihi', '2021-06-24 17:43:12'),
+(87, 10, 6, 'chaof em', '2021-06-24 17:58:41'),
+(88, 10, 6, 'chaof a', '2021-06-24 17:58:41'),
+(89, 10, 6, 'chaof a', '2021-06-24 17:58:41'),
+(90, 10, 6, 'alo', '2021-06-24 17:58:41'),
+(91, 6, 10, '123', '2021-06-24 17:58:54'),
+(92, 10, 6, 'xin', '2021-06-24 20:12:17'),
+(93, 10, 6, 'sdsd', '2021-06-24 20:12:17'),
+(94, 6, 10, 'sadasdasd', '2021-06-24 20:13:58'),
+(95, 6, 10, 'xxx', NULL),
+(96, 6, 10, 'sdsd\ndfdf\nfgfg', NULL),
+(97, 6, 10, 'dsdsd\nsdsd', NULL),
+(98, 6, 10, 'sdsd', NULL),
+(99, 6, 7, 'alooo', '2021-07-05 19:29:19'),
+(100, 6, 7, 'Giao ơi', '2021-07-05 19:29:19'),
+(101, 7, 6, 'ngân ngoock ngheecsk :)))', '2021-07-05 19:30:25'),
+(102, 6, 7, 'nhây', '2021-07-05 19:31:35'),
+(103, 6, 7, ':)) mình phải nghiêm túc', '2021-07-05 19:31:35'),
+(104, 6, 7, 'anh nhắn em có nhận được thông báo ko ?', '2021-07-05 19:32:39'),
+(105, 7, 6, ':))) ê nghe cái sound hi', '2021-07-05 19:32:19'),
+(106, 6, 7, ':)) ok', '2021-07-05 19:32:39'),
+(107, 6, 7, 'vậy thì được', '2021-07-05 19:32:39'),
+(108, 7, 6, 'nghiêm túc gke :))', '2021-07-05 19:32:57'),
+(109, 6, 7, 'em thử nhấn mấy cái mục khác xem có bị lỗi gì ko ??', '2021-07-05 19:33:26'),
+(110, 6, 7, 'sao có lỗi gì không', '2021-07-05 19:35:06'),
+(111, 7, 6, 'hong, bình thường à', '2021-07-05 19:35:22'),
+(112, 6, 7, 'ok vậy được r , cám ơn em nha', '2021-07-05 19:36:15'),
+(113, 18, 6, 'alo', '2021-08-03 20:23:19');
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -12447,8 +12528,8 @@ INSERT INTO `tinnhan` (`MaTN`, `Magui`, `Manhan`, `noidung`, `thoigian`) VALUES
 -- Các ràng buộc cho bảng `bacsi`
 --
 ALTER TABLE `bacsi`
-  ADD CONSTRAINT `bacsi_ibfk_1` FOREIGN KEY (`MaKhoa`) REFERENCES `khoa` (`MaKhoa`),
-  ADD CONSTRAINT `bacsi_ibfk_2` FOREIGN KEY (`MaPhong`) REFERENCES `phong` (`MaPhong`);
+  ADD CONSTRAINT `bacsi_ibfk_2` FOREIGN KEY (`MaPhong`) REFERENCES `phong` (`MaPhong`),
+  ADD CONSTRAINT `bacsi_ibfk_3` FOREIGN KEY (`MaKhoa`) REFERENCES `khoa` (`MaKhoa`);
 
 --
 -- Các ràng buộc cho bảng `lichtruc`

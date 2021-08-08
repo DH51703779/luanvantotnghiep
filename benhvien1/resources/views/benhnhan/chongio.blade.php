@@ -85,23 +85,47 @@
             var id = $(this).data('id');
             var ma = $(this).data('ma');
             var date = $(this).val();
-            const y = document.querySelector('#time')
             const x = document.querySelector('#date')
             x.innerHTML = 'Ca trực : &nbsp;' + date;
-            if (id.toLowerCase() === "sáng") {
-                y.innerHTML = `
-                <a href="{{URL::to('/dienthongtin?malt=`+ma+`&time=07:00')}}"  class="box" >7:00 - 8:00</a>
-                <a href="{{URL::to('/dienthongtin?malt=`+ma+`&time=08:00')}}"  class="box" >8:00 - 9:00</a>
-                <a href="{{URL::to('/dienthongtin?malt=`+ma+`&time=09:00')}}"  class="box" >9:00 - 10:00</a>
-                <a href="{{URL::to('/dienthongtin?malt=`+ma+`&time=10:00')}}"  class="box" >10:00 - 11:00</a> 
-                `;
-            } else {
-                y.innerHTML = `
-                <a href="{{URL::to('/dienthongtin?malt=`+ma+`&time=13:30')}}"  class="box" >13:30 - 14:30</a>
-                <a href="{{URL::to('/dienthongtin?malt=`+ma+`&time=14:30')}}"  class="box" >14:30 - 15:30</a>
-                <a href="{{URL::to('/dienthongtin?malt=`+ma+`&time=15:30')}}"  class="box" >15:30 - 16:30</a>
-                `;
-            }
+            $.ajax({
+                url: 'gio/' + ma,
+                method: "GET",
+                success: function(data) {
+                    data = JSON.parse(data);
+                    var resultajax = '';
+                    console.log(data);
+                    $('#time').show();
+                    if (id.toLowerCase() === "sáng") {
+                        if(data[0].ca1 < 5){
+                            resultajax += `<a href="{{URL::to('/dienthongtin?malt=` + ma + `&time=07:00')}}"  class="box" >7:00 - 8:00  (`+data[0].ca1+`/5)</a>`
+                        }
+                        if(data[0].ca2 < 5){
+                            resultajax += `<a href="{{URL::to('/dienthongtin?malt=` + ma + `&time=08:00')}}"  class="box" >8:00 - 9:00  (`+data[0].ca2+`/5)</a>`
+                        }
+                        if(data[0].ca3 < 5){
+                            resultajax += `<a href="{{URL::to('/dienthongtin?malt=` + ma + `&time=09:00')}}"  class="box" >9:00 - 10:00 (`+data[0].ca3+`/5)</a>`
+                        }
+                        if(data[0].ca4 < 5){
+                            resultajax += `<a href="{{URL::to('/dienthongtin?malt=` + ma + `&time=010:00')}}"  class="box" >10:00 - 11:00 (`+data[0].ca4+`/5)</a>`
+                        }
+                        
+                    }
+                    else{
+                        if(data[0].ca5 < 5){
+                            resultajax += `<a href="{{URL::to('/dienthongtin?malt=` + ma + `&time=13:30')}}"  class="box" >13:30 - 14:30  (`+data[0].ca5+`/5)</a>`
+                        }
+                        if(data[0].ca6 < 5){
+                            resultajax += `<a href="{{URL::to('/dienthongtin?malt=` + ma + `&time=14:30')}}"  class="box" >14:30 - 15:30  (`+data[0].ca6+`/5)</a>`
+                        }
+                        if(data[0].ca7 < 5){
+                            resultajax += `<a href="{{URL::to('/dienthongtin?malt=` + ma + `&time=15:30')}}"  class="box" >15:30 - 16:30 (`+data[0].ca7+`/5)</a>`
+                        }
+                    }
+                    $('#time').html(resultajax);
+                  
+                }
+            })
+
         });
     });
 </script>
@@ -113,11 +137,11 @@
 
 
 <style>
-      .box {
+    .box {
         color: blue;
         cursor: pointer;
         display: inline-table;
-        letter-spacing: 1px; 
+        letter-spacing: 1px;
         border: 1px solid #1462f3 !important;
         margin: 5;
         height: 50px;
@@ -125,6 +149,7 @@
         line-height: 40px;
         text-align: center;
     }
+
     .title {
         font-size: 2rem;
 
@@ -279,10 +304,12 @@
 
         text-align: center;
     }
-    .btnx:hover{
+
+    .btnx:hover {
         background-color: #1462f3;
     }
-    .btnx:active{
+
+    .btnx:active {
         background-color: #1462f3;
     }
 

@@ -1,3 +1,4 @@
+
 @extends('bacsi.bacsi_layout')
 @section('bacsi_content')
 <meta name="csrf-token" content="{{ csrf_token() }}">

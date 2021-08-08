@@ -20,14 +20,14 @@
     <link rel="stylesheet" href="{{asset('public/frontend/css/gijgo.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/animated-headline.css')}}">
-    <link rel="stylesheet" href="{{asset('public/frontend/css/magnific-popup.css')}}">
+  
     <link rel="stylesheet" href="{{asset('public/frontend/css/fontawesome-all.min.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/themify-icons.css')}}">
     <link rel="stylesheet" href="{{asset('public/frontend/css/slick.css')}}">
 
 
     <link rel="stylesheet" href="{{asset('public/frontend/css/style.css')}}">
-
+    <link rel="stylesheet" href="{{asset('public/backend/DataTables/css/jquery.dataTables.min.css')}}">
 
 </head>
 
@@ -73,6 +73,7 @@
                                             <li>   <a class=""><i class="fas fa-user"></i> 
                                                     <?php echo $taikhoan; ?></a>
                                                 <ul class="submenu">
+                                                <li><a href="{{URL::to('/kiemtra')}}">Quản Lý</a></li>
                                                     <li><a href="{{URL::to('/trangcanhan')}}">Quản Lý</a></li>
                                                     <li> <a href="{{URL::to('/dangxuat')}}" class="">Đăng xuất</a></li>
                                                     <li><a href="{{URL::to('/doimatkhau')}}">Đổi mật khẩu</a></li>
@@ -143,7 +144,7 @@
     </main>
     <footer>
         <!--? Footer Start-->
-        <div class="footer-area section-bg" data-background="assets/img/gallery/footer_bg.jpg">
+        <div class="footer-area section-bg" >
             <div class="container">
                 <div class="footer-top footer-padding">
                     <div class="row d-flex justify-content-between">
@@ -224,17 +225,17 @@
 
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="{{asset('public/frontend/js/owl.carousel.min.js')}}"></script>
+    <!-- <script src="{{asset('public/frontend/js/owl.carousel.min.js')}}"></script> -->
     <script src="{{asset('public/frontend/js/slick.min.js')}}"></script>
     <!-- One Page, Animated-HeadLin -->
     <script src="{{asset('public/frontend/js/wow.min.js')}}"></script>
     <script src="{{asset('public/frontend/js/animated.headline.js')}}"></script>
-    <script src="{{asset('public/frontend/js/jquery.magnific-popup.js')}}"></script>
+    <!-- <script src="{{asset('public/frontend/js/jquery.magnific-popup.js')}}"></script> -->
 
     <!-- Date Picker -->
-    <script src="{{asset('public/frontend/js/gijgo.min.js')}}"></script>
+    <!-- <script src="{{asset('public/frontend/js/gijgo.min.js')}}"></script> -->
 
-    <script src="{{asset('public/frontend/js/jquery.magnifier.js')}}"></script>
+    <!-- <script src="{{asset('public/frontend/js/jquery.magnifier.js')}}"></script> -->
    
 
     <script src="{{asset('public/frontend/js/jquery.form.js')}}"></script>
@@ -245,8 +246,12 @@
     
     <script src="{{asset('public/frontend/js/plugins.js')}}"></script>
     <script src="{{asset('public/frontend/js/main.js')}}"></script>
-
-
+    <script src="{{asset('public/backend/DataTables/js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+            });
+        </script>
     <!-- lịch -->
 
 </body>

@@ -5,8 +5,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
+    <link rel="stylesheet" href="{{asset('public/backend/DataTables/css/jquery.dataTables.min.css')}}">
+    <script src="{{asset('public/backend/DataTables/js/jquery.dataTables.min.js')}}"></script>
+    <script type="text/javascript">
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+            });
+        </script>
 
     <?php   $x = Session::get('trunglich');
       $y = isset($x)?$x:null;
@@ -24,21 +29,20 @@
 </head>
 
 <hr>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="thongtin()" class="btnx form-group">
-                     &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{URL::to('/trangcanhan')}}" class="btnx btn form-group">
+                &nbsp;&nbsp;&nbsp;  Hồ sơ bệnh nhân  &nbsp;&nbsp;&nbsp;
                 </a>
-                <i class="fas fa-tags"></i> <a href="{{URL::to('/trangcanhan')}}" class="btnx form-group">
-                    Hồ sơ bệnh nhân &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a>
-                <i class="fas fa-tags"></i> <a onclick="lichkham()" class="btnx form-group">
-                    Lịch khám bệnh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{{URL::to('/trang-ca-nhan/lich-kham/')}}" class="btnx btn form-group">
+                &nbsp;&nbsp;&nbsp; Lịch khám bệnh &nbsp;&nbsp;&nbsp;
                 </a>
 <section class="contact-section">
 
     <div class="container">
     
         <div class="row">
-            <div class="col-4">
+            <div class="col-2">
               
 
             </div>
@@ -46,7 +50,7 @@
             <h3>Lịch khám bệnh</h3>
                 <br>
                 <br>
-                <table  class="table table-bordered">
+                <table id="myTable"  class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Thời gian</th>
@@ -85,7 +89,7 @@
                     </tbody>
                 </table><?php if ($int > 4) { ?>
                 
-                <span> {{ $lichkham->render() }}</span>
+      
                     
                     <?php } ?>
 

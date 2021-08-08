@@ -10,40 +10,39 @@
 
 
     <script type="text/javascript">
-       
 
 
-       
+
+
     </script>
 
 
 </head>
 
 <hr>
-               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="thongtin()" class="btnx form-group">
-                    &nbsp;&nbsp;&nbsp;
-                </a>
-                <i class="fas fa-tags"></i> <a href="{{URL::to('/trangcanhan')}}" class="btnx form-group">
-                    Hồ sơ bệnh nhân &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a>
-                <i class="fas fa-tags"></i> <a href="{{URL::to('/trang-ca-nhan/lich-kham/')}}" class="btnx form-group">
-                    Lịch khám bệnh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{{URL::to('/trangcanhan')}}" class="btnx btn form-group">
+    &nbsp;&nbsp;&nbsp; Hồ sơ bệnh nhân &nbsp;&nbsp;&nbsp;
+</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="{{URL::to('/trang-ca-nhan/lich-kham/')}}" class="btnx btn form-group">
+    &nbsp;&nbsp;&nbsp; Lịch khám bệnh &nbsp;&nbsp;&nbsp;
+</a>
 <section class="contact-section">
 
     <div class="container">
-    
+
         <div class="row">
-            <div class="col-4">
-              
+            <div class="col-2">
+
 
             </div>
-            
+
             <div id="form" class="col-8">
                 <h3>Hồ sơ bệnh nhân</h3>
                 <br>
                 <br>
-                <table class="table table-bordered">
+                <table id="myTable" class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Mã bệnh nhân</th>
@@ -66,43 +65,43 @@
                                                         } ?></td>
                         <td data-label="Ngày sinh :">{{($bn->Ngaysinh)}}</td>
                         <td data-label="Số điện thoại:">{{($bn->DienThoai)}}</td>
-                        <td><a class="hihi" data-id="{{($bn->MaBN)}}">Chi tiết</a></td>
+                        <td><a style="color: green;" class="hihi" data-id="{{($bn->MaBN)}}">Chi tiết</a> | <a style="color: red;" class="hihix" data-id="{{($bn->MaBN)}}">Xóa</a> </td>
                     </tr>
                     @endforeach
                 </table>
-              
+
 
             </div>
             <script type="text/javascript">
                 $(document).ready(function() {
-                    $('.hihi').click(function() {
-                        var id = $(this).attr('data-id');
-                        $.ajax({
-                            url: '/benhvien1/trangcanhan/chi-tiet-benh-nhan/' + id,
-                            method: "GET",
-                            success: function(data) {
-                                data = JSON.parse(data);
+                            $('.hihi').click(function() {
+                                var id = $(this).attr('data-id');
+                                $.ajax({
+                                    url: '/benhvien1/trangcanhan/chi-tiet-benh-nhan/' + id,
+                                    method: "GET",
+                                    success: function(data) {
+                                        data = JSON.parse(data);
 
-                                var resultajax = `    <h3>Thông tin bệnh nhân</h3>
+                                        var resultajax = `    <h3>Thông tin bệnh nhân</h3>
                 <br>
                 <br>
                 <form  class="" action="{{URL::to('/trang-ca-nhan/cap-nhat')}}" method="post"
                     enctype="multipart/form-data" >
                     @csrf `;
-                                console.log(data);
-                                $('#form').show();
-                                for (let i = 0; i < data.length; i++) {
-                                    var gioitinh = "";
-                                    if (data[i].gioitinh == 0) {
-                                        gioitinh = "Nữ";
-                                    } else {
-                                        gioitinh = "Nam";
-                                    } //Ngày trực
-                                    resultajax += `  <div class="row">
+                                        console.log(data);
+                                        $('#form').show();
+                                        for (let i = 0; i < data.length; i++) {
+                                            var gioitinh = "";
+                                            if (data[i].gioitinh == 0) {
+                                                gioitinh = "Nữ";
+                                            } else {
+                                                gioitinh = "Nam";
+                                            } //Ngày trực
+                                            resultajax += `  <div class="row">
 
 <div class="col-6"> 
     <label class="form-label">Họ Tên :</label>
-    <input type="hidden" name="MaBN" value="`+data[i].MaBN+`">
+    <input type="hidden" name="MaBN" value="` + data[i].MaBN + `">
     <input name="ten" value="` + data[i].TenBN + `" class="form-control">
 </div>
 <div class="col-4">
@@ -140,28 +139,46 @@
     <input name="hinh" type="file" class="form-control-file">
     <br>
 </div>`
-                                    if ((data[i].hinh).length == 0) {
-                                        resultajax += ``
+                                            if ((data[i].hinh).length == 0) {
+                                                resultajax += ``
 
-                                    }else
-                                    {
-                                        resultajax += `<div class="col-3">
+                                            } else {
+                                                resultajax += `<div class="col-3">
 
 <br>
 
 <img data-magnifyby="6" src="{{asset('./public/uploads/benhan/` + data[i].hinh + `')}}" height='100' alt='' />
 </div>`
-                                    }
+                                            }
 
-                                }
-                                var x = resultajax + ` </div>
+                                        }
+                                        var x = resultajax + ` </div>
                     <button class="btn" type="submit">Cập nhật </button>
                 </form>`
-                                $('#form').html(x);
-                            }
-                        })
-                    })
-                });
+                                        $('#form').html(x);
+                                    }
+                                })
+                            });
+
+                            $('.hihix').click(function() {
+                                var id = $(this).attr('data-id');
+                                $.ajax({
+                                    url: '/benhvien1/trangcanhan/xoa/' + id,
+                                    method: "GET",
+                                    success: function(data) {
+                                        alert(data);
+                                        if(data.length != 51){
+                                        location.reload();
+                                        }
+                                        
+                                    }
+
+                                })
+
+                                });
+
+
+                            });
             </script>
         </div>
 
@@ -172,6 +189,12 @@
 <style>
     .hihi {
         color: red;
+        cursor: pointer;
+    }
+
+    .hihix {
+        color: red;
+        cursor: pointer;
     }
 
     input {
@@ -243,25 +266,18 @@
     }
 
     .btnx {
-        
+        font-size: 1.5rem;
+        background-color: skyblue;
+        border: 1px solid black;
         -moz-user-select: none;
         text-transform: uppercase;
         color: black;
         cursor: pointer;
-        display: inline-table;
-      
-        font-weight: 500;
-       
-
-      
-        transition: color 0.4s linear;
-        position: relative;
-        z-index: 1;
-
-        overflow: hidden;
-        margin: 0;
+        border-radius: 5px;
+        margin: 10px;
+        cursor: pointer;
         line-height: 40px;
-      
+        font-weight: bold;
         text-align: center;
     }
 
@@ -285,8 +301,8 @@
 
     }
 
-   
-    a:hover{
+
+    a:hover {
         color: black !important;
     }
 </style>
